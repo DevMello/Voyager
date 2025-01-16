@@ -1,12 +1,21 @@
 plugins {
     id 'java'
+    id 'maven-publish'
+    id 'com.diffplug.spotless' version '6.3.0'
 }
 
-group = 'xyz.devmello'
+group = 'xyz.devmello.voyager'
 version = '1.0-SNAPSHOT'
+project.ext {
+    projectName = 'xyz.devmello'
+    projectVersion = 'v1.0.0-ALPHA'
+}
 
 repositories {
     mavenCentral()
+    maven {
+        url = 'https://jitpack.io'
+    }
 }
 
 dependencies {
@@ -16,4 +25,32 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+spotless {
+    java {
+        target fileTree('.') {
+            include '**/*.java'
+            exclude '**/build/**', '**/build-*/**'
+        }
+
+        indentWithSpaces()
+        trimTrailingWhitespace()
+        endWithNewline()
+
+        prettier([
+                'prettier': '2.0.5',
+                'prettier-plugin-java': '0.8.0'
+        ]).configFile('.prettierrc.yml')
+    }
+
+    groovyGradle {
+        target fileTree('.') {
+            include '**/*.gradle'
+            exclude '**/build/**', '**/build-*/**'
+        }
+
+        indentWithSpaces()
+        trimTrailingWhitespace()
+    }
 }
