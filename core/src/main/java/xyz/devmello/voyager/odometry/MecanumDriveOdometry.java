@@ -10,6 +10,7 @@
 
 package xyz.devmello.voyager.odometry;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.kinematics.EncoderConverter;
@@ -19,8 +20,6 @@ import xyz.devmello.voyager.kinematics.MecanumState;
 import xyz.devmello.voyager.robot.AbstractOdometry;
 import xyz.devmello.voyager.robot.sensors.Encoder;
 import xyz.devmello.voyager.time.Time;
-
-import java.util.function.Supplier;
 
 /**
  * Odometry for a mecanum drive.

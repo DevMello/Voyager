@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.robot.modifiers;
 
+import java.util.function.Function;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXYZ;
-
-import java.util.function.Function;
 
 /**
  * Easy-to-use builder class for creating odometry modifiers.

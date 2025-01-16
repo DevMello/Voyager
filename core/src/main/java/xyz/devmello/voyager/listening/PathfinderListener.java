@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.listening;
 
-import xyz.devmello.voyager.Voyager;
-
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import xyz.devmello.voyager.Voyager;
 
 /**
  * A listener that accepts {@code Pathfinder} as a parameter.
@@ -36,10 +35,7 @@ public class PathfinderListener implements Supplier<Boolean> {
      * @param predicate  a predicate that determines whether this supplier
      *                   should return true.
      */
-    public PathfinderListener(
-        Voyager voyager,
-        Predicate<Voyager> predicate
-    ) {
+    public PathfinderListener(Voyager voyager, Predicate<Voyager> predicate) {
         this.voyager = voyager;
         this.predicate = predicate;
     }

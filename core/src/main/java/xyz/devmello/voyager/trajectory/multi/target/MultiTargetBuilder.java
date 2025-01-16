@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.trajectory.multi.target;
 
-import xyz.devmello.voyager.geometry.Angle;
-import xyz.devmello.voyager.geometry.PointXYZ;
-
 import java.util.ArrayList;
 import java.util.List;
+import xyz.devmello.voyager.geometry.Angle;
+import xyz.devmello.voyager.geometry.PointXYZ;
 
 /**
  * A builder used for building arrays of {@link TrajectoryTarget}, designed

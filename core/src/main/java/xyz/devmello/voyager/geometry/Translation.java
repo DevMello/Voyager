@@ -10,15 +10,14 @@
 
 package xyz.devmello.voyager.geometry;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import xyz.devmello.voyager.logging.Logger;
 import xyz.devmello.voyager.math.Equals;
 import xyz.devmello.voyager.math.Rounding;
 import xyz.devmello.voyager.utils.StringUtils;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A two-dimensional translation. Robots should be capable of receiving

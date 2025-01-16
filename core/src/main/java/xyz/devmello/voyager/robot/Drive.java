@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.robot;
 
+import java.util.function.Function;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.Translation;
-
-import java.util.function.Function;
 
 /**
  * One of the two major components of your robot - firstly, there's odometry,

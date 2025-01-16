@@ -10,14 +10,13 @@
 
 package xyz.devmello.voyager.execution;
 
+import java.util.ArrayList;
+import java.util.List;
 import xyz.devmello.voyager.follower.Follower;
 import xyz.devmello.voyager.robot.Drive;
 import xyz.devmello.voyager.robot.Odometry;
 import xyz.devmello.voyager.robot.Robot;
 import xyz.devmello.voyager.time.Time;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A manager, responsible for... well, managing executors. This manager

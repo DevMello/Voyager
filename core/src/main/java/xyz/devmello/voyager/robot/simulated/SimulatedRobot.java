@@ -10,14 +10,13 @@
 
 package xyz.devmello.voyager.robot.simulated;
 
+import java.util.function.Function;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.geometry.Translation;
 import xyz.devmello.voyager.robot.Drive;
 import xyz.devmello.voyager.robot.Odometry;
 import xyz.devmello.voyager.robot.Robot;
-
-import java.util.function.Function;
 
 /**
  * An implementation of {@link Drive} and {@link Odometry} that allows

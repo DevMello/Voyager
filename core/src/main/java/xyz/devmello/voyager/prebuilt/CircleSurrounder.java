@@ -35,11 +35,7 @@ public class CircleSurrounder {
      * @param center     the center of the circle.
      * @param radius     the radius of the circle.
      */
-    public CircleSurrounder(
-        Voyager voyager,
-        PointXY center,
-        double radius
-    ) {
+    public CircleSurrounder(Voyager voyager, PointXY center, double radius) {
         this.voyager = voyager;
         this.center = center;
         this.radius = radius;

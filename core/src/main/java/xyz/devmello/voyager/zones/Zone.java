@@ -10,13 +10,12 @@
 
 package xyz.devmello.voyager.zones;
 
-import xyz.devmello.voyager.Voyager;
-import xyz.devmello.voyager.geometry.PointXY;
-import xyz.devmello.voyager.geometry.Shape;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import xyz.devmello.voyager.Voyager;
+import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.geometry.Shape;
 
 /**
  * A zone is a wrapper for a shape that provides some additional utilities
@@ -56,12 +55,18 @@ public class Zone implements Serializable {
      * @param onExit the code to be executed when a robot exits the zone.
      * @param whileInside the code to be executed while the robot is inside the zone.
      */
-    public Zone(Shape<?> shape, Runnable onEnter, Runnable onExit, Runnable whileInside) {
+    public Zone(
+        Shape<?> shape,
+        Runnable onEnter,
+        Runnable onExit,
+        Runnable whileInside
+    ) {
         this.shape = shape;
         this.onEnter = onEnter;
         this.onExit = onExit;
         this.whileInside = whileInside;
     }
+
     /**
      * Create a {@code Zone} based on a {@link Shape}.
      * Does not have any code to be executed when a robot enters, exits, or is inside the zone.
@@ -72,7 +77,12 @@ public class Zone implements Serializable {
     }
 
     public static Zone inflate(Zone zone, double inflationRadius) {
-        return new Zone((Shape<?>) zone.getShape().growBy(inflationRadius), zone.onEnter, zone.onExit, zone.whileInside) {
+        return new Zone(
+            (Shape<?>) zone.getShape().growBy(inflationRadius),
+            zone.onEnter,
+            zone.onExit,
+            zone.whileInside
+        ) {
 
             @Override
             public void onEnter(Voyager voyager) {

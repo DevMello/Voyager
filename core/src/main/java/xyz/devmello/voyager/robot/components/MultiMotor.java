@@ -10,9 +10,8 @@
 
 package xyz.devmello.voyager.robot.components;
 
-import xyz.devmello.voyager.utils.ArrayUtils;
-
 import java.util.List;
+import xyz.devmello.voyager.utils.ArrayUtils;
 
 /**
  * A wrapper that encapsulates several motors. This is most useful for

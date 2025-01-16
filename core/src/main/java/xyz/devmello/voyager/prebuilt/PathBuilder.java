@@ -10,6 +10,8 @@
 
 package xyz.devmello.voyager.prebuilt;
 
+import java.util.ArrayList;
+import java.util.List;
 import xyz.devmello.voyager.follower.Follower;
 import xyz.devmello.voyager.follower.FollowerGenerator;
 import xyz.devmello.voyager.geometry.Angle;
@@ -18,9 +20,6 @@ import xyz.devmello.voyager.robot.Robot;
 import xyz.devmello.voyager.trajectory.FastTrajectory;
 import xyz.devmello.voyager.trajectory.LinearTrajectory;
 import xyz.devmello.voyager.trajectory.Trajectory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Utility class for building a series of points.

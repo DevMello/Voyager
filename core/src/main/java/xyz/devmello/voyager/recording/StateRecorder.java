@@ -10,16 +10,15 @@
 
 package xyz.devmello.voyager.recording;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import xyz.devmello.voyager.exceptions.IllegalStateRecordException;
 import xyz.devmello.voyager.exceptions.StateRecorderException;
 import xyz.devmello.voyager.logging.Logger;
 import xyz.devmello.voyager.time.Time;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Used in recording the state of a robot. If you've already recorded a

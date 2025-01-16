@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.movement;
 
+import java.io.Serializable;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.math.Velocity;
-
-import java.io.Serializable;
 
 /**
  * A snapshot of a robot's movement. Primarily, the robot's velocity and

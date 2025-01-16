@@ -10,16 +10,15 @@
 
 package xyz.devmello.voyager.execution;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 import xyz.devmello.voyager.follower.Follower;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.logging.Logger;
 import xyz.devmello.voyager.robot.Drive;
 import xyz.devmello.voyager.robot.Odometry;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * An executor that executes followers. I know, I know - it's pretty hard to

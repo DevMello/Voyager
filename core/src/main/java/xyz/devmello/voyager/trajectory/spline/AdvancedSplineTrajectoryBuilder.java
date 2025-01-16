@@ -10,6 +10,11 @@
 
 package xyz.devmello.voyager.trajectory.spline;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import xyz.devmello.voyager.Core;
 import xyz.devmello.voyager.exceptions.InvalidSpeedException;
 import xyz.devmello.voyager.exceptions.InvalidToleranceException;
@@ -22,12 +27,6 @@ import xyz.devmello.voyager.math.ApacheSpline.Interpolator;
 import xyz.devmello.voyager.math.MonotoneCubicSpline;
 import xyz.devmello.voyager.math.Spline;
 import xyz.devmello.voyager.utils.StringUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
 
 /**
  * A builder for the {@link AdvancedSplineTrajectory} class. Please read over

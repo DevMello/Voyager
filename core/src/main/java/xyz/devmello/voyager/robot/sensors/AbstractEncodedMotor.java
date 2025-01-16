@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.robot.sensors;
 
-import xyz.devmello.voyager.robot.components.Motor;
-
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import xyz.devmello.voyager.robot.components.Motor;
 
 public class AbstractEncodedMotor extends AbstractEncoder implements Motor {
     private final Consumer<Double> setPower;

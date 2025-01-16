@@ -180,11 +180,11 @@ public class PIDController extends AbstractController {
             this.setpoint = setpoint;
             if (setpointRange != 0) {
                 setpoint =
-                        constrain(
-                                setpoint,
-                                actual - setpointRange,
-                                actual + setpointRange
-                        );
+                    constrain(
+                        setpoint,
+                        actual - setpointRange,
+                        actual + setpointRange
+                    );
             }
             double error = setpoint - actual;
             fOut = feedForward * setpoint;
@@ -201,15 +201,17 @@ public class PIDController extends AbstractController {
                 iOut = constrain(iOut, -maxIOutput, maxIOutput);
             }
             output = fOut + pOut + iOut + dOut;
-            if (minOutput != maxOutput && !bounded(output, minOutput, maxOutput)) {
+            if (
+                minOutput != maxOutput && !bounded(output, minOutput, maxOutput)
+            ) {
                 errorSum = error;
             } else if (
-                    outputRampRate != 0 &&
-                            !bounded(
-                                    output,
-                                    lastOutput - outputRampRate,
-                                    lastOutput + outputRampRate
-                            )
+                outputRampRate != 0 &&
+                !bounded(
+                    output,
+                    lastOutput - outputRampRate,
+                    lastOutput + outputRampRate
+                )
             ) {
                 errorSum = error;
             } else if (maxIOutput != 0) {
@@ -219,17 +221,18 @@ public class PIDController extends AbstractController {
             }
             if (outputRampRate != 0) {
                 output =
-                        constrain(
-                                output,
-                                lastOutput - outputRampRate,
-                                lastOutput + outputRampRate
-                        );
+                    constrain(
+                        output,
+                        lastOutput - outputRampRate,
+                        lastOutput + outputRampRate
+                    );
             }
             if (minOutput != maxOutput) {
                 output = constrain(output, minOutput, maxOutput);
             }
             if (outputFilter != 0) {
-                output = lastOutput * outputFilter + output * (1 - outputFilter);
+                output =
+                    lastOutput * outputFilter + output * (1 - outputFilter);
             }
             lastOutput = output;
             return output;

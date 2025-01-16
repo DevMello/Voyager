@@ -10,9 +10,8 @@
 
 package xyz.devmello.voyager.utils;
 
-import xyz.devmello.voyager.math.Rounding;
-
 import java.util.function.Consumer;
+import xyz.devmello.voyager.math.Rounding;
 
 /**
  * String-related utilities.

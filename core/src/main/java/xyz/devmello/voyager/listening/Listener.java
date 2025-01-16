@@ -10,16 +10,15 @@
 
 package xyz.devmello.voyager.listening;
 
-import xyz.devmello.voyager.Voyager;
-import xyz.devmello.voyager.time.Time;
-import xyz.devmello.voyager.utils.StringUtils;
-import xyz.devmello.voyager.utils.ValidationUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import xyz.devmello.voyager.Voyager;
+import xyz.devmello.voyager.time.Time;
+import xyz.devmello.voyager.utils.StringUtils;
+import xyz.devmello.voyager.utils.ValidationUtils;
 
 /**
  * Responsible for listening for a condition and executing some functionality

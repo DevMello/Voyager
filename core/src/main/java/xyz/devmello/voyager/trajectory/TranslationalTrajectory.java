@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.trajectory;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.geometry.Translation;
-
-import java.util.function.Supplier;
 
 /**
  * A {@link Trajectory} based on a {@link Translation}.

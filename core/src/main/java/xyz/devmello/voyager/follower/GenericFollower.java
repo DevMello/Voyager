@@ -10,6 +10,7 @@
 
 package xyz.devmello.voyager.follower;
 
+import java.util.function.Consumer;
 import xyz.devmello.voyager.control.Controller;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXYZ;
@@ -18,8 +19,6 @@ import xyz.devmello.voyager.logging.Logger;
 import xyz.devmello.voyager.trajectory.Trajectory;
 import xyz.devmello.voyager.utils.StringUtils;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.util.function.Consumer;
 
 /**
  * A generic implementation of the {@link Follower} interface. For almost all

@@ -10,12 +10,11 @@
 
 package xyz.devmello.voyager.utils;
 
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import xyz.devmello.voyager.listening.ListenerBuilder;
 import xyz.devmello.voyager.listening.ListenerManager;
 import xyz.devmello.voyager.listening.ListenerMode;
-
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 /**
  * A very simple boolean button. Buttons are based on a {@link Supplier} that

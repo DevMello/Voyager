@@ -10,14 +10,13 @@
 
 package xyz.devmello.voyager.math;
 
+import java.util.Arrays;
 import org.apache.commons.math3.analysis.interpolation.AkimaSplineInterpolator;
 import org.apache.commons.math3.analysis.interpolation.SplineInterpolator;
 import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
 import xyz.devmello.voyager.exceptions.SplineException;
 import xyz.devmello.voyager.geometry.PointXY;
 import xyz.devmello.voyager.utils.StringUtils;
-
-import java.util.Arrays;
 
 /**
  * Implementation of {@link PolynomialSplineFunction} - very cool! This

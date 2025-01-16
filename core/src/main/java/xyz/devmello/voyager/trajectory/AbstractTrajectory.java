@@ -10,12 +10,11 @@
 
 package xyz.devmello.voyager.trajectory;
 
-import xyz.devmello.voyager.geometry.PointXYZ;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import xyz.devmello.voyager.geometry.PointXYZ;
 
 /**
  * A {@code Trajectory} that adds support for end conditions, execution

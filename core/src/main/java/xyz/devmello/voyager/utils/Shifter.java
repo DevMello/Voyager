@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.utils;
 
-import xyz.devmello.voyager.Voyager;
-import xyz.devmello.voyager.listening.ListenerMode;
-
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import xyz.devmello.voyager.Voyager;
+import xyz.devmello.voyager.listening.ListenerMode;
 
 /**
  * A controller for moving up and down levels, like some kind of shifter.

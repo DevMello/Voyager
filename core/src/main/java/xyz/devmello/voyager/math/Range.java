@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.math;
 
+import java.io.Serializable;
 import xyz.devmello.voyager.geometry.Geometry;
 import xyz.devmello.voyager.utils.StringUtils;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.io.Serializable;
 
 /**
  * A range of numbers. A {@code Range} is made up of two {@link RangeNode}s,

@@ -10,14 +10,13 @@
 
 package xyz.devmello.voyager.math;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXY;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.utils.StringUtils;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A measurement of velocity - motion in a given direction. This velocity can

@@ -10,12 +10,11 @@
 
 package xyz.devmello.voyager.robot.simulated;
 
+import java.util.function.Function;
 import xyz.devmello.voyager.geometry.Translation;
 import xyz.devmello.voyager.robot.Drive;
 import xyz.devmello.voyager.utils.StringUtils;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.util.function.Function;
 
 /**
  * A simulated/virtual/not real drive.

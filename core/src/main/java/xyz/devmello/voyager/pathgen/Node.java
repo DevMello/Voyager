@@ -10,15 +10,14 @@
 
 package xyz.devmello.voyager.pathgen;
 
-import xyz.devmello.voyager.geometry.PointXY;
-import xyz.devmello.voyager.utils.StringUtils;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.utils.StringUtils;
 
 /**
  * "I don't even know to be honest."

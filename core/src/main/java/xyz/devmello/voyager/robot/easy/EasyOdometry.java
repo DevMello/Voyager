@@ -10,13 +10,12 @@
 
 package xyz.devmello.voyager.robot.easy;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXY;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.robot.AbstractOdometry;
 import xyz.devmello.voyager.robot.Odometry;
-
-import java.util.function.Supplier;
 
 /**
  * Static methods to create {@link Odometry} instances.

@@ -10,13 +10,12 @@
 
 package xyz.devmello.voyager.listening;
 
-import xyz.devmello.voyager.Core;
-import xyz.devmello.voyager.time.Time;
-import xyz.devmello.voyager.utils.ValidationUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
+import xyz.devmello.voyager.Core;
+import xyz.devmello.voyager.time.Time;
+import xyz.devmello.voyager.utils.ValidationUtils;
 
 /**
  * Builder tool for {@link Listener}. This is designed to make it easier to

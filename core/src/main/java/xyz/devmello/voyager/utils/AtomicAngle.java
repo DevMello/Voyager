@@ -10,9 +10,8 @@
 
 package xyz.devmello.voyager.utils;
 
-import xyz.devmello.voyager.geometry.Angle;
-
 import java.util.concurrent.atomic.AtomicReference;
+import xyz.devmello.voyager.geometry.Angle;
 
 /**
  * {@code AtomicReference} for {@link Angle}.

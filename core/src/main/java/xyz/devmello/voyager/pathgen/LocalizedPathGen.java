@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.pathgen;
 
-import xyz.devmello.voyager.geometry.PointXY;
-import xyz.devmello.voyager.zones.Zone;
-
 import java.util.ArrayList;
 import java.util.List;
+import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.zones.Zone;
 
 /**
  * A localized implementation of the {@link PathGen} class. This allows you

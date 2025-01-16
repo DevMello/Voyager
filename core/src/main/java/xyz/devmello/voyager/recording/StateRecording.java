@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.recording;
 
-import xyz.devmello.voyager.utils.ValidationUtils;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import xyz.devmello.voyager.utils.ValidationUtils;
 
 /**
  * A simple container for several {@link StateRecord}s.

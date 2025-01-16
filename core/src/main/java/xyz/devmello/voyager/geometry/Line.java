@@ -10,9 +10,8 @@
 
 package xyz.devmello.voyager.geometry;
 
-import xyz.devmello.voyager.math.Equals;
-
 import java.io.Serializable;
+import xyz.devmello.voyager.math.Equals;
 
 /**
  * A line SEGMENT - this is not a line, this is a line segment. If you want

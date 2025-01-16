@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.recording;
 
+import java.io.Serializable;
 import xyz.devmello.voyager.exceptions.NullPointException;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.geometry.Translation;
-
-import java.io.Serializable;
 
 /**
  * A snapshot of Pathfinder's movement. Each {@code MovementRecord} represents

@@ -10,13 +10,6 @@
 
 package xyz.devmello.voyager.trajectory;
 
-import xyz.devmello.voyager.geometry.Angle;
-import xyz.devmello.voyager.geometry.PointXY;
-import xyz.devmello.voyager.geometry.PointXYZ;
-import xyz.devmello.voyager.geometry.Translation;
-import xyz.devmello.voyager.time.ElapsedTimer;
-import xyz.devmello.voyager.trajectory.multi.segment.MultiSegmentTrajectory;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +17,12 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import xyz.devmello.voyager.geometry.Angle;
+import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.geometry.PointXYZ;
+import xyz.devmello.voyager.geometry.Translation;
+import xyz.devmello.voyager.time.ElapsedTimer;
+import xyz.devmello.voyager.trajectory.multi.segment.MultiSegmentTrajectory;
 
 /**
  * A {@code Trajectory} specifies to a {@code FollowerExecutor} a set of

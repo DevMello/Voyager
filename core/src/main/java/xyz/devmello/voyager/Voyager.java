@@ -10,6 +10,8 @@
 
 package xyz.devmello.voyager;
 
+import java.util.*;
+import java.util.function.*;
 import xyz.devmello.voyager.control.Controller;
 import xyz.devmello.voyager.control.ProportionalController;
 import xyz.devmello.voyager.exceptions.*;
@@ -54,9 +56,6 @@ import xyz.devmello.voyager.trajectory.spline.MultiSplineBuilder;
 import xyz.devmello.voyager.utils.*;
 import xyz.devmello.voyager.zones.Zone;
 import xyz.devmello.voyager.zones.ZoneProcessor;
-
-import java.util.*;
-import java.util.function.*;
 
 /**
  * The highest-level interface used for interacting with {@code Pathfinder}.
@@ -1048,10 +1047,7 @@ public class Voyager {
      * @return {@code this}, used for method chaining.
      */
     @SuppressWarnings("unchecked")
-    public Voyager addListener(
-        Predicate<Voyager> condition,
-        Runnable action
-    ) {
+    public Voyager addListener(Predicate<Voyager> condition, Runnable action) {
         Voyager voyager = this;
 
         return addListener(
@@ -1934,10 +1930,7 @@ public class Voyager {
      *                  instance of Pathfinder as a parameter.
      * @return this instance of Pathfinder, used for method chaining.
      */
-    public Voyager tickUntil(
-        double timeoutMs,
-        Predicate<Voyager> isValid
-    ) {
+    public Voyager tickUntil(double timeoutMs, Predicate<Voyager> isValid) {
         NotNull.throwExceptionIfNull(
             "A null value was passed to the tickUntil method! " +
             "Please make sure you don't pass any null values.",
@@ -2029,10 +2022,7 @@ public class Voyager {
      *                     this time is reached, it'll stop as normal.
      * @return this instance of Pathfinder, used for method chaining.
      */
-    public Voyager andThen(
-        Consumer<Voyager> onCompletion,
-        double timeoutMs
-    ) {
+    public Voyager andThen(Consumer<Voyager> onCompletion, double timeoutMs) {
         return andThen(onCompletion, timeoutMs, () -> true);
     }
 
@@ -2187,10 +2177,7 @@ public class Voyager {
      * @param action    the action that will be run repeatedly.
      * @return {@code this}, used for method chaining.
      */
-    public Voyager asLongAs(
-        Predicate<Voyager> predicate,
-        Runnable action
-    ) {
+    public Voyager asLongAs(Predicate<Voyager> predicate, Runnable action) {
         return asLongAs(Double.MAX_VALUE, predicate, action);
     }
 
@@ -2314,10 +2301,7 @@ public class Voyager {
      * @return {@code this}, used for method chaining.
      */
     @SuppressWarnings("BusyWait")
-    public Voyager waitAsLongAs(
-        Supplier<Boolean> condition,
-        double maxTime
-    ) {
+    public Voyager waitAsLongAs(Supplier<Boolean> condition, double maxTime) {
         if (condition == null) throw new NullPointerException(
             "Attempted to use the waitAsLongAs method with a null " +
             "condition supplier!"
@@ -3071,12 +3055,7 @@ public class Voyager {
      * @param timeoutMs how long the robot should move for, in milliseconds.
      * @return {@code this}, used for method chaining.
      */
-    public Voyager moveFor(
-        double vx,
-        double vy,
-        double vz,
-        double timeoutMs
-    ) {
+    public Voyager moveFor(double vx, double vy, double vz, double timeoutMs) {
         return moveFor(new Translation(vx, vy, vz), timeoutMs);
     }
 

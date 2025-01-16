@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.pathgen;
 
-import xyz.devmello.voyager.geometry.PointXY;
-import xyz.devmello.voyager.geometry.Rectangle;
-
 import java.util.ArrayList;
 import java.util.List;
+import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.geometry.Rectangle;
 
 /**
  * Wrapper class for localizing a {@link Grid}.

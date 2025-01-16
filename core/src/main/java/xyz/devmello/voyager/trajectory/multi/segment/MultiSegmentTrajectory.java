@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.trajectory.multi.segment;
 
-import xyz.devmello.voyager.geometry.PointXYZ;
-import xyz.devmello.voyager.trajectory.Trajectory;
-
 import java.util.Arrays;
 import java.util.List;
+import xyz.devmello.voyager.geometry.PointXYZ;
+import xyz.devmello.voyager.trajectory.Trajectory;
 
 /**
  * A {@code Trajectory} made up of multiple trajectories. Pretty simply, it's

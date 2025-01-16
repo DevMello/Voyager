@@ -10,12 +10,11 @@
 
 package xyz.devmello.voyager.trajectory.spline;
 
+import java.util.ArrayList;
+import java.util.List;
 import xyz.devmello.voyager.geometry.PointXY;
 import xyz.devmello.voyager.math.MonotoneCubicSpline;
 import xyz.devmello.voyager.math.Spline;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A builder used for creating a specially-tuned {@link Spline}, meant

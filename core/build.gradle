@@ -5,6 +5,23 @@ plugins {
 group = 'xyz.devmello.voyager'
 version = '1.0-SNAPSHOT'
 
+tasks {
+    compileJava {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+
+    withJavadocJar()
+    withSourcesJar()
+}
 repositories {
     mavenCentral()
 }
@@ -18,4 +35,15 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.projectName
+            version = project.projectVersion
+            artifactId = 'core'
+            from components.java
+        }
+    }
 }

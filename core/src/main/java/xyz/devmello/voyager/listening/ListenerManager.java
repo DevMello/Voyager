@@ -10,18 +10,17 @@
 
 package xyz.devmello.voyager.listening;
 
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import xyz.devmello.voyager.Core;
 import xyz.devmello.voyager.Voyager;
 import xyz.devmello.voyager.logging.Logger;
 import xyz.devmello.voyager.utils.RandomString;
 import xyz.devmello.voyager.utils.Toggle;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 /**
  * Manager responsible for several {@link Listener}s. Each {@link Listener}

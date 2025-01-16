@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.robot;
 
+import java.util.function.Function;
 import xyz.devmello.voyager.exceptions.NullPointException;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.util.function.Function;
 
 /**
  * An abstract implementation of the {@link Odometry} interface. This

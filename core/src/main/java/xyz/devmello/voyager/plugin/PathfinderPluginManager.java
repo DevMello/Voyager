@@ -10,13 +10,12 @@
 
 package xyz.devmello.voyager.plugin;
 
+import java.util.ArrayList;
+import java.util.List;
 import xyz.devmello.voyager.Voyager;
 import xyz.devmello.voyager.follower.Follower;
 import xyz.devmello.voyager.logging.Logger;
 import xyz.devmello.voyager.zones.Zone;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A manager for controlling the loading and usage of any plugins being
@@ -182,8 +181,6 @@ public class PathfinderPluginManager {
             plugins.size()
         );
 
-        plugins.forEach(
-            plugin -> plugin.onFinishFollower(voyager, follower)
-        );
+        plugins.forEach(plugin -> plugin.onFinishFollower(voyager, follower));
     }
 }

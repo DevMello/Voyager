@@ -10,16 +10,15 @@
 
 package xyz.devmello.voyager.geometry;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import xyz.devmello.voyager.logging.Logger;
 import xyz.devmello.voyager.math.Equals;
 import xyz.devmello.voyager.utils.ArrayUtils;
 import xyz.devmello.voyager.utils.StringUtils;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
 
 /**
  * A 2d coordinate with an X value, a Y value, and a value "Z" representing

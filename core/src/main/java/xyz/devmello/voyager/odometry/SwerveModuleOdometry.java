@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.odometry;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.kinematics.SwerveModuleState;
-
-import java.util.function.Supplier;
 
 public class SwerveModuleOdometry {
     private final Supplier<Double> getSpeed;

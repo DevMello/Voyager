@@ -10,12 +10,11 @@
 
 package xyz.devmello.voyager.kinematics;
 
+import java.util.Arrays;
 import org.ejml.simple.SimpleMatrix;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXY;
 import xyz.devmello.voyager.geometry.Translation;
-
-import java.util.Arrays;
 
 /**
  * Kinematics for a swerve drive. This is stolen pretty shamelessly (and poorly

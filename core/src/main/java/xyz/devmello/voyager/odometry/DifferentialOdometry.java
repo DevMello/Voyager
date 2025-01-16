@@ -10,13 +10,12 @@
 
 package xyz.devmello.voyager.odometry;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.kinematics.DifferentialDriveOdometry;
 import xyz.devmello.voyager.kinematics.EncoderConverter;
 import xyz.devmello.voyager.robot.AbstractOdometry;
-
-import java.util.function.Supplier;
 
 /**
  * {@code Odometry} implementation that uses two encoders and a gyroscope

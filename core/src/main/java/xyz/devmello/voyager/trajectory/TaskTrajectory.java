@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.trajectory;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.time.ElapsedTimer;
 import xyz.devmello.voyager.utils.StringUtils;
-
-import java.util.function.Supplier;
 
 /**
  * A task-oriented {@code Trajectory} interface that does not require the

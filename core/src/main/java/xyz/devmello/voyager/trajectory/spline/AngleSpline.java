@@ -10,13 +10,12 @@
 
 package xyz.devmello.voyager.trajectory.spline;
 
+import java.util.ArrayList;
+import java.util.List;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.math.MonotoneCubicSpline;
 import xyz.devmello.voyager.math.Spline;
 import xyz.devmello.voyager.utils.StringUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A wrapper class for using {@link Spline}s with {@link Angle}s.

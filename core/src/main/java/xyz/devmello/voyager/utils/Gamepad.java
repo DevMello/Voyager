@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.utils;
 
-import xyz.devmello.voyager.geometry.PointXYZ;
-
 import java.util.HashMap;
 import java.util.Map;
+import xyz.devmello.voyager.geometry.PointXYZ;
 
 public class Gamepad {
     private final Map<InputButton, PointXYZ> pointMap = new HashMap<>();

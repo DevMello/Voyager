@@ -10,12 +10,11 @@
 
 package xyz.devmello.voyager.prebuilt;
 
+import java.util.function.Function;
+import java.util.function.Supplier;
 import xyz.devmello.voyager.control.Controller;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.Translation;
-
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
  * A modifier that controls the heading of the robot by using a turn controller

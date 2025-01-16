@@ -10,9 +10,8 @@
 
 package xyz.devmello.voyager.geometry;
 
-import xyz.devmello.voyager.math.Equation;
-
 import java.io.Serializable;
+import xyz.devmello.voyager.math.Equation;
 
 /**
  * A representation of a linear equation. A linear equation is a

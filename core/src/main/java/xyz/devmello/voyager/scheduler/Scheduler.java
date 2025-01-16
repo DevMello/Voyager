@@ -10,15 +10,14 @@
 
 package xyz.devmello.voyager.scheduler;
 
-import xyz.devmello.voyager.Voyager;
-import xyz.devmello.voyager.geometry.PointXYZ;
-import xyz.devmello.voyager.time.Time;
-import xyz.devmello.voyager.trajectory.Trajectory;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
+import xyz.devmello.voyager.Voyager;
+import xyz.devmello.voyager.geometry.PointXYZ;
+import xyz.devmello.voyager.time.Time;
+import xyz.devmello.voyager.trajectory.Trajectory;
 
 /**
  * A scheduler is an easy way to automate Pathfinder's operation.

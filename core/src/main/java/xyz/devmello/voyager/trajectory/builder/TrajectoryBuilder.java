@@ -10,15 +10,14 @@
 
 package xyz.devmello.voyager.trajectory.builder;
 
+import java.util.ArrayList;
+import java.util.List;
 import xyz.devmello.voyager.exceptions.NullPointException;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.trajectory.FastTrajectory;
 import xyz.devmello.voyager.trajectory.LinearTrajectory;
 import xyz.devmello.voyager.trajectory.Trajectory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A builder class used for creating simple sequences of trajectories.

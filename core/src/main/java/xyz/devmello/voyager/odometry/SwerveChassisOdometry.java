@@ -10,6 +10,7 @@
 
 package xyz.devmello.voyager.odometry;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.kinematics.Kinematics;
@@ -18,8 +19,6 @@ import xyz.devmello.voyager.kinematics.SwerveModuleState;
 import xyz.devmello.voyager.kinematics.SwerveState;
 import xyz.devmello.voyager.robot.AbstractOdometry;
 import xyz.devmello.voyager.time.Time;
-
-import java.util.function.Supplier;
 
 public class SwerveChassisOdometry extends AbstractOdometry {
     private final SwerveModuleOdometry frontRightOdometry;

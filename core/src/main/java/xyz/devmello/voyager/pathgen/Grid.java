@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.pathgen;
 
-import xyz.devmello.voyager.utils.StringUtils;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import xyz.devmello.voyager.utils.StringUtils;
 
 /**
  * A grid is pretty much a two-dimensional array.

@@ -10,10 +10,10 @@
 
 package xyz.devmello.voyager.units;
 
+import static xyz.devmello.voyager.units.Unit.*;
+
 import java.util.EnumMap;
 import java.util.Map;
-
-import static xyz.devmello.voyager.units.Unit.*;
 
 /**
  * Utilities for formatting different units.

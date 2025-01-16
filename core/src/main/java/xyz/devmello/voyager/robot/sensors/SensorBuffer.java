@@ -10,9 +10,8 @@
 
 package xyz.devmello.voyager.robot.sensors;
 
-import xyz.devmello.voyager.math.RollingAverage;
-
 import java.util.function.Supplier;
+import xyz.devmello.voyager.math.RollingAverage;
 
 /**
  * Wrapper for sensors that supply double values, meant to smoothen results

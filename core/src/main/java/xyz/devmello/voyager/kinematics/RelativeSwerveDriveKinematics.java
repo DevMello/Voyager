@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.kinematics;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.Translation;
-
-import java.util.function.Supplier;
 
 /**
  * The simplest form of swerve drive kinematics. This class operates very

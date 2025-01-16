@@ -10,16 +10,15 @@
 
 package xyz.devmello.voyager.math;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import xyz.devmello.voyager.exceptions.SplineException;
 import xyz.devmello.voyager.geometry.PointXY;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.utils.ArrayUtils;
 import xyz.devmello.voyager.utils.DoubleUtils;
 import xyz.devmello.voyager.utils.StringUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * A monotone cubic spline... whatever that means. This is the standard

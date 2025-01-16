@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.robot.easy;
 
-import xyz.devmello.voyager.robot.components.AbstractMotor;
-import xyz.devmello.voyager.robot.components.Motor;
-
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import xyz.devmello.voyager.robot.components.AbstractMotor;
+import xyz.devmello.voyager.robot.components.Motor;
 
 /**
  * Static methods to create {@link Motor} instances.

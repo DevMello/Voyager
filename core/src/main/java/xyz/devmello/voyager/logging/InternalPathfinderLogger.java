@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.logging;
 
-import xyz.devmello.voyager.utils.StringUtils;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
+import xyz.devmello.voyager.utils.StringUtils;
 
 /**
  * Internal utility class for Pathfinder's logging system.

@@ -10,6 +10,7 @@
 
 package xyz.devmello.voyager.geometry;
 
+import java.io.Serializable;
 import xyz.devmello.voyager.exceptions.InvalidToleranceException;
 import xyz.devmello.voyager.exceptions.NullAngleException;
 import xyz.devmello.voyager.logging.Logger;
@@ -17,8 +18,6 @@ import xyz.devmello.voyager.math.Equals;
 import xyz.devmello.voyager.math.Rounding;
 import xyz.devmello.voyager.utils.StringUtils;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.io.Serializable;
 
 /**
  * An angle, represented both in degrees and radians. {@code Angle} objects

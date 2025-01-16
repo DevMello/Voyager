@@ -10,6 +10,7 @@
 
 package xyz.devmello.voyager.drive;
 
+import java.util.function.Function;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.Translation;
 import xyz.devmello.voyager.kinematics.MecanumState;
@@ -18,8 +19,6 @@ import xyz.devmello.voyager.robot.Drive;
 import xyz.devmello.voyager.robot.components.Motor;
 import xyz.devmello.voyager.robot.modifiers.DriveModifier;
 import xyz.devmello.voyager.utils.NotNull;
-
-import java.util.function.Function;
 
 /**
  * Simple mecanum drive implementation. This implementation makes use of the

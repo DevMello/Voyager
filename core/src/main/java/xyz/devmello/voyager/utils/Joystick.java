@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.utils;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXY;
-
-import java.util.function.Supplier;
 
 /**
  * A two-axis joystick. This joystick has two axes - an X axis and a Y

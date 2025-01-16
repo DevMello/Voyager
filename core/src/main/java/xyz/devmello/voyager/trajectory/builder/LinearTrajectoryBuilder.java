@@ -10,13 +10,12 @@
 
 package xyz.devmello.voyager.trajectory.builder;
 
+import java.util.ArrayList;
+import java.util.List;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.trajectory.LinearTrajectory;
 import xyz.devmello.voyager.trajectory.Trajectory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Simple trajectory builder used in creating trajectory groupings made solely

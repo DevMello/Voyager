@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.drive;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.kinematics.RelativeSwerveModuleState;
 import xyz.devmello.voyager.robot.components.Motor;
-
-import java.util.function.Supplier;
 
 /**
  * A representation of a swerve module. In a typical swerve drive chassis,

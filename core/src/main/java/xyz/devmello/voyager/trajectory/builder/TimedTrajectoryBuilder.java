@@ -10,13 +10,12 @@
 
 package xyz.devmello.voyager.trajectory.builder;
 
+import java.util.ArrayList;
+import java.util.List;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.Translation;
 import xyz.devmello.voyager.trajectory.TimedTrajectory;
 import xyz.devmello.voyager.trajectory.Trajectory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Builder for creating a {@link List} of {@link TimedTrajectory}s.

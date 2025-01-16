@@ -10,6 +10,7 @@
 
 package xyz.devmello.voyager.drive;
 
+import java.util.function.Function;
 import xyz.devmello.voyager.control.Controller;
 import xyz.devmello.voyager.geometry.Translation;
 import xyz.devmello.voyager.kinematics.RelativeSwerveDriveKinematics;
@@ -17,8 +18,6 @@ import xyz.devmello.voyager.kinematics.RelativeSwerveModuleKinematics;
 import xyz.devmello.voyager.kinematics.RelativeSwerveModuleState;
 import xyz.devmello.voyager.kinematics.RelativeSwerveState;
 import xyz.devmello.voyager.robot.Drive;
-
-import java.util.function.Function;
 
 /**
  * A very simple (and very lovely) swerve drive implementation.

@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.math;
 
-import xyz.devmello.voyager.utils.ValidationUtils;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import xyz.devmello.voyager.utils.ValidationUtils;
 
 /**
  * Tools for rounding numbers. You can change the default number of places

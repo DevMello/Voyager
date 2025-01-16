@@ -27,6 +27,16 @@ test {
     useJUnitPlatform()
 }
 
+allprojects {
+    group = project.projectName
+    version = project.projectVersion
+
+    java {
+        withJavadocJar()
+        withSourcesJar()
+    }
+}
+
 spotless {
     java {
         target fileTree('.') {

@@ -10,15 +10,14 @@
 
 package xyz.devmello.voyager.prebuilt;
 
+import java.util.ArrayList;
+import java.util.List;
 import xyz.devmello.voyager.Voyager;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.trajectory.FastTrajectory;
 import xyz.devmello.voyager.trajectory.LinearTrajectory;
 import xyz.devmello.voyager.trajectory.Trajectory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Utility class used for working with trajectories. Instead of having to

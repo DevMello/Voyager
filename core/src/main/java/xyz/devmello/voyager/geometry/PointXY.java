@@ -10,17 +10,16 @@
 
 package xyz.devmello.voyager.geometry;
 
-import xyz.devmello.voyager.exceptions.InvalidToleranceException;
-import xyz.devmello.voyager.math.Equals;
-import xyz.devmello.voyager.utils.ArrayUtils;
-import xyz.devmello.voyager.utils.StringUtils;
-import xyz.devmello.voyager.utils.ValidationUtils;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import xyz.devmello.voyager.exceptions.InvalidToleranceException;
+import xyz.devmello.voyager.math.Equals;
+import xyz.devmello.voyager.utils.ArrayUtils;
+import xyz.devmello.voyager.utils.StringUtils;
+import xyz.devmello.voyager.utils.ValidationUtils;
 
 /**
  * A 2d coordinate with X and Y values. The foundation Pathfinder's

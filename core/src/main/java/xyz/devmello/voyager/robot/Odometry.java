@@ -10,12 +10,11 @@
 
 package xyz.devmello.voyager.robot;
 
+import java.util.function.Function;
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
  * A system capable of reporting the position of a robot. Several odometry

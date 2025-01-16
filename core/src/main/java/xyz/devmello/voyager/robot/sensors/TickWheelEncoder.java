@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.robot.sensors;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.kinematics.EncoderConverter;
 import xyz.devmello.voyager.kinematics.EncoderTracker;
-
-import java.util.function.Supplier;
 
 /**
  * Used in tracking the speed of an encoder that outputs ticks.

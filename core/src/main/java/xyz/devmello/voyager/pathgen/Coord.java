@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.pathgen;
 
-import xyz.devmello.voyager.utils.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+import xyz.devmello.voyager.utils.StringUtils;
 
 /**
  * A coordinate is basically a {@link xyz.devmello.voyager.geometry.PointXY},

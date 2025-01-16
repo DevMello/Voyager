@@ -10,6 +10,8 @@
 
 package xyz.devmello.voyager.follower;
 
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXY;
 import xyz.devmello.voyager.geometry.PointXYZ;
@@ -17,9 +19,6 @@ import xyz.devmello.voyager.geometry.Translation;
 import xyz.devmello.voyager.logging.Logger;
 import xyz.devmello.voyager.trajectory.Trajectory;
 import xyz.devmello.voyager.utils.ValidationUtils;
-
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 /**
  * Every rose has its thorns. And every trajectory has its follower. That

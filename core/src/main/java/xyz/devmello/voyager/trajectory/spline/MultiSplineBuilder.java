@@ -10,6 +10,9 @@
 
 package xyz.devmello.voyager.trajectory.spline;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import xyz.devmello.voyager.geometry.Angle;
 import xyz.devmello.voyager.geometry.PointXY;
 import xyz.devmello.voyager.geometry.PointXYZ;
@@ -17,10 +20,6 @@ import xyz.devmello.voyager.trajectory.Trajectory;
 import xyz.devmello.voyager.trajectory.multi.segment.MultiSegmentTrajectory;
 import xyz.devmello.voyager.utils.StringUtils;
 import xyz.devmello.voyager.utils.Trio;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class MultiSplineBuilder {
     private final List<Node> nodes = new ArrayList<>();

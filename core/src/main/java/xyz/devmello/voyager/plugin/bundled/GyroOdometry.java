@@ -10,11 +10,10 @@
 
 package xyz.devmello.voyager.plugin.bundled;
 
+import java.util.function.Supplier;
 import xyz.devmello.voyager.Voyager;
 import xyz.devmello.voyager.geometry.PointXYZ;
 import xyz.devmello.voyager.plugin.PathfinderPlugin;
-
-import java.util.function.Supplier;
 
 /**
  * @author Colin Robertson

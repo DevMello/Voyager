@@ -10,10 +10,9 @@
 
 package xyz.devmello.voyager.robot.components;
 
-import xyz.devmello.voyager.utils.ValidationUtils;
-
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import xyz.devmello.voyager.utils.ValidationUtils;
 
 /**
  * An abstract implementation of the {@link Motor} interface. This
