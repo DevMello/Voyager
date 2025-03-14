@@ -74,7 +74,8 @@ publishing {
 
             credentials(HttpHeaderCredentials) {
                 name = "Authorization"
-                value = "token f66aba5e554a6a9ab4eae992a881f64a0542fe64"
+                value = "token ${project.findProperty('gitea.token')}"
+
             }
 
             authentication {
