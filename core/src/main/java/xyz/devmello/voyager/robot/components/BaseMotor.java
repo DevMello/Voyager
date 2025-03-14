@@ -276,7 +276,7 @@ public abstract class BaseMotor implements Motor {
      *         what this is.
      *     </li>
      * </ul>
-     * </p>
+     *
      *
      * @param power the power value to set to the motor.
      */

@@ -53,7 +53,7 @@ import org.ejml.equation.Sequence;
  * accurate, meaning it will not affect the output as much, while a lower
  * covariance means the value is more accurate, and that value will impact
  * the output more. The projection matrix is used for outputting values.
- * </p>
+ *
  *
  * <p>
  * Here are a bunch of resources I used in creating this class:
@@ -102,7 +102,7 @@ import org.ejml.equation.Sequence;
  *         </a>
  *     </li>
  * </ul>
- * </p>
+ *
  *
  * @author Colin Robertson
  * @see <a href="https://en.wikipedia.org/wiki/Kalman_filter">Wikipedia</a>

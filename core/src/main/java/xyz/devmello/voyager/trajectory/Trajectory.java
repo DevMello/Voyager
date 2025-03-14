@@ -62,7 +62,7 @@ import xyz.devmello.voyager.trajectory.multi.segment.MultiSegmentTrajectory;
  * listeners are bound to the trajectory itself and are based on the state
  * of the trajectory; therefore, you do not need to use Pathfinder's
  * {@code listening} package in order to use these listeners.
- * </p>
+ *
  *
  * <p>
  * There's a set of default methods that can be used to reproduce an existing

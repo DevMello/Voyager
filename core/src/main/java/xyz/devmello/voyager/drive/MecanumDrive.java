@@ -292,7 +292,7 @@ public class MecanumDrive implements Drive {
      *     <li>The kinematics' turn magnitude</li>
      *     <li>The kinematics' angle offset</li>
      * </ul>
-     * </p>
+     *
      */
     public static class MecanumDriveBuilder {
         private Motor frontRight;

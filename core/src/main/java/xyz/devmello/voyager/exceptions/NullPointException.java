@@ -27,7 +27,7 @@ import xyz.devmello.voyager.geometry.PointXYZ;
  * Those methods will ensure that any point you pass is never null. If the
  * point would have been null, the method will return the result of the
  * {@link PointXY#zero()} method.
- * </p>
+ *
  *
  * <p>
  * This exception is typically caused by an odometry subsystem reporting a

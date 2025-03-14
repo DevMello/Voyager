@@ -33,7 +33,7 @@ import xyz.devmello.voyager.geometry.Translation;
  * 1, 0, and 0. If your robot is moving at a 45 degree angle, you'd have
  * 1, 1, and 0 - you're still not turning, but now you're moving along both
  * the X and Y axes.
- * </p>
+ *
  *
  * <p>
  * In order for Pathfinder to control your robot, it needs to be able to
@@ -53,7 +53,7 @@ import xyz.devmello.voyager.geometry.Translation;
  * long as it works. The drivetrain must actually set power to motors - if
  * it doesn't, Pathfinder won't think it's moving, and it thus won't be able
  * to determine where it is.
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.0.0

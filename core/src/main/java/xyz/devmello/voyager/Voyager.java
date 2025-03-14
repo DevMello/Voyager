@@ -88,7 +88,7 @@ import xyz.devmello.voyager.zones.ZoneProcessor;
  * </ul>
  * Many of these can be disabled using minimal mode, which is explained in
  * the next paragraph.
- * </p>
+ *
  *
  * <p>
  * Pathfinder provides a global trajectory map that can be used to reference
@@ -286,11 +286,11 @@ public class Voyager {
      * and that's okay - you simply don't have to worry about them and everything
      * will work as intended. If that's the case, check out minimal mode
      * with {@link #setIsMinimal(boolean)}.
-     * </p>
+     *
      *
      * <p>
      * Example implementation:
-     * <code><pre>
+     * <pre>
      * public class Example {
      *     public void doStuff() {
      *         Drive drive = new SimulatedDrive();
@@ -311,11 +311,11 @@ public class Voyager {
      *         );
      *     }
      * }
-     * </pre></code>
+     * </pre>
      * Obviously, you shouldn't uses {@link SimulatedOdometry} or
      * {@link SimulatedDrive} for an actual robot, because then nothing
      * would work. But you get the point.
-     * </p>
+     *
      *
      * @param robot          the {@code Pathfinder} instance's robot. This robot
      *                       should have an odometry system that can report the
@@ -415,11 +415,11 @@ public class Voyager {
      * and that's okay - you simply don't have to worry about them and everything
      * will work as intended. If that's the case, check out minimal mode
      * with {@link #setIsMinimal(boolean)}.
-     * </p>
+     *
      *
      * <p>
      * Example implementation:
-     * <code><pre>
+     * <pre>
      * public class Example {
      *     public void doStuff() {
      *         Drive drive = new SimulatedDrive();
@@ -438,11 +438,11 @@ public class Voyager {
      *         );
      *     }
      * }
-     * </pre></code>
+     * </pre>
      * Obviously, you shouldn't uses {@link SimulatedOdometry} or
      * {@link SimulatedDrive} for an actual robot, because then nothing
      * would work. But you get the point.
-     * </p>
+     *
      */
     public Voyager(
         Robot robot,
@@ -492,11 +492,11 @@ public class Voyager {
      * and that's okay - you simply don't have to worry about them and everything
      * will work as intended. If that's the case, check out minimal mode
      * with {@link #setIsMinimal(boolean)}.
-     * </p>
+     *
      *
      * <p>
      * Example implementation:
-     * <code><pre>
+     * <pre>
      * public class Example {
      *     public void doStuff() {
      *         Drive drive = new SimulatedDrive();
@@ -512,11 +512,11 @@ public class Voyager {
      *         );
      *     }
      * }
-     * </pre></code>
+     * </pre>
      * Obviously, you shouldn't uses {@link SimulatedOdometry} or
      * {@link SimulatedDrive} for an actual robot, because then nothing
      * would work. But you get the point.
-     * </p>
+     *
      *
      * @param robot          the {@code Pathfinder} instance's robot. This robot
      *                       should have an odometry system that can report the
@@ -557,11 +557,11 @@ public class Voyager {
      * and that's okay - you simply don't have to worry about them and everything
      * will work as intended. If that's the case, check out minimal mode
      * with {@link #setIsMinimal(boolean)}.
-     * </p>
+     *
      *
      * <p>
      * Example implementation:
-     * <code><pre>
+     * <pre>
      * public class Example {
      *     public void doStuff() {
      *         Drive drive = new SimulatedDrive();
@@ -574,11 +574,11 @@ public class Voyager {
      *         );
      *     }
      * }
-     * </pre></code>
+     * </pre>
      * Obviously, you shouldn't uses {@link SimulatedOdometry} or
      * {@link SimulatedDrive} for an actual robot, because then nothing
      * would work. But you get the point.
-     * </p>
+     *
      *
      * @param robot       the {@code Pathfinder} instance's robot. This robot
      *                    should have an odometry system that can report the
@@ -1082,7 +1082,7 @@ public class Voyager {
      * </ul>
      * If you don't plan on using either of those methods, you can entirely
      * ignore the speed value.
-     * </p>
+     *
      *
      * @param speed the speed at which Pathfinder should generate new linear
      *              trajectories when either of the two "goTo" methods
@@ -1122,7 +1122,7 @@ public class Voyager {
      *     <li>{@link #goTo(PointXY)}</li>
      *     <li>{@link #goTo(PointXYZ)}</li>
      * </ul>
-     * </p>
+     *
      *
      * @param tolerance the tolerance Pathfinder will use in generating
      *                  new linear trajectories.
@@ -1161,7 +1161,7 @@ public class Voyager {
      *     <li>{@link #goTo(PointXY)}</li>
      *     <li>{@link #goTo(PointXYZ)}</li>
      * </ul>
-     * </p>
+     *
      *
      * @param angleTolerance the tolerance Pathfinder should use in generating
      *                       new linear trajectories.
@@ -1607,7 +1607,7 @@ public class Voyager {
      *     <li>On tick operations ({@link #onTickOperations})</li>
      *     <li>Plugin post-tick ({@link PathfinderPluginManager#postTick(Voyager)})</li>
      * </ol>
-     * </p>
+     *
      *
      * <p>
      * If you're curious about how many times the tick method is being called
@@ -1617,7 +1617,7 @@ public class Voyager {
      *     <li>{@code pathfinder.loadPlugin(new StatTracker());}</li>
      *     <li>{@code pathfinder.loadBundledPlugins();}</li>
      * </ul>
-     * </p>
+     *
      *
      * @return {@code this}, used for method chaining.
      */
@@ -3438,7 +3438,7 @@ public class Voyager {
      * Basically, this is a technical limitation because of my laziness and
      * poorly written code. This might get fixed at some point in the near
      * future, but it's not a high priority.
-     * </p>
+     *
      *
      * @param heading the heading Pathfinder should remain at.
      * @return {@code this}, used for method chaining.
@@ -3475,7 +3475,7 @@ public class Voyager {
      * Basically, this is a technical limitation because of my laziness and
      * poorly written code. This might get fixed at some point in the near
      * future, but it's not a high priority.
-     * </p>
+     *
      *
      * @param point the point to lock heading around.
      * @return {@code this}, used for method chaining.
@@ -3515,7 +3515,7 @@ public class Voyager {
      * Basically, this is a technical limitation because of my laziness and
      * poorly written code. This might get fixed at some point in the near
      * future, but it's not a high priority.
-     * </p>
+     *
      *
      * @param point       the point to lock heading around.
      * @param angleOffset the offset to be applied to the angle Pathfinder

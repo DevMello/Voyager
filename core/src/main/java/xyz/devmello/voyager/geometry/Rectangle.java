@@ -23,7 +23,7 @@ import xyz.devmello.voyager.math.Equals;
  *     <li>{@link #rotate(Angle)}</li>
  *     <li>{@link #rotate(Angle, PointXY)}</li>
  * </ul>
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.1.0
@@ -58,7 +58,7 @@ public class Rectangle implements Shape<Rectangle> {
      *
      * <p>
      * Rectangles must be constructed as follows. As a visual example:
-     * <code>
+     *
      * <pre>
      *   B                   C
      *   #####################
@@ -68,7 +68,7 @@ public class Rectangle implements Shape<Rectangle> {
      *   #####################
      *   A                   D
      * </pre>
-     * </code>
+     *
      * As a text-based example, the following points should be adjacent.
      * <ul>
      *     <li>A should be adjacent to B and D.</li>
@@ -76,7 +76,7 @@ public class Rectangle implements Shape<Rectangle> {
      *     <li>C should be adjacent to B and D.</li>
      *     <li>D should be adjacent to C and A.</li>
      * </ul>
-     * </p>
+     *
      *
      * <p>
      * The following lines MUST be parallel - if they're not, you'll get
@@ -85,7 +85,7 @@ public class Rectangle implements Shape<Rectangle> {
      *     <li>AB should be parallel to CD.</li>
      *     <li>BC should be parallel to AD.</li>
      * </ul>
-     * </p>
+     *
      *
      * @param a one of the rectangle's four points.
      *          Should be adjacent to B and D.

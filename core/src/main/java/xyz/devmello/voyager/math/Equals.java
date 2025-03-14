@@ -48,10 +48,10 @@ public class Equals {
      * <p>
      * For the purpose of specificity, the implementation of this method is
      * provided below.
-     * <code><pre>
+     * <pre>
      * return Math.abs(a - b) {@code <=} tolerance;
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      *
      * @param a         the first of the two numbers.
      * @param b         the second of the two numbers.

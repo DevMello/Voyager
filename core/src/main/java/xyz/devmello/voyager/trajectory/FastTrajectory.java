@@ -43,7 +43,7 @@ import xyz.devmello.voyager.utils.StringUtils;
  * will be generated - we'll call them {@code elapsedX} and {@code elapsedY}.
  * If both the elapsed X and elapsed Y values are greater than the minimum
  * X and minimum Y values, the trajectory has been completed.
- * </p>
+ *
  *
  * <p>
  * This significantly decreases accuracy, as the robot will not automatically

@@ -54,7 +54,7 @@ import xyz.devmello.voyager.geometry.PointXYZ;
  *         the trajectory's finish.
  *     </li>
  * </ul>
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 1.0.2
@@ -78,7 +78,7 @@ public class MutableLinearTrajectory implements Trajectory {
      *     <li>Tolerance: 0</li>
      *     <li>Angle tolerance: 0 deg</li>
      * </ul>
-     * </p>
+     *
      */
     public MutableLinearTrajectory() {
         this(PointXYZ.ZERO, 0, 0, Angle.fromDeg(0));

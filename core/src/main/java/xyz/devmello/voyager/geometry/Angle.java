@@ -45,7 +45,7 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  *     <li>{@link #formatAsRadLong()}</li>
  *     <li>{@link #formatAsRadShort()}</li>
  * </ul>
- * </p>
+ *
  *
  * <p>
  * This class was created primarily to simplify operations related to angles.
@@ -63,7 +63,7 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  *     <li>{@link #atan(double)}</li>
  *     <li>{@link #atan2(double, double)}</li>
  * </ul>
- * </p>
+ *
  *
  * <p>
  * Additionally, because {@code Angle} objects store both degrees and radians
@@ -72,7 +72,7 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  *     <li>{@link #deg()} - angle in degrees</li>
  *     <li>{@link #rad()} - angle in radians</li>
  * </ul>
- * </p>
+ *
  *
  *
  * <p>
@@ -91,7 +91,7 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  *     <li>{@link #fixedRotateDeg(Angle, double)}</li>
  *     <li>{@link #fixedRotateRad(Angle, double)}</li>
  * </ul>
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.0.0
@@ -295,14 +295,14 @@ public class Angle implements Comparable<Angle>, Serializable {
      *
      * <p>
      * Examples:
-     * <code><pre>
+     * <pre>
      * Angle a = Angle.parse("45 deg");             // 45 degrees
      * Angle b = Angle.parse("45 rad");             // 45 radians
      * Angle c = Angle.parse("45d");                // 45 degrees
      * Angle d = Angle.parse("45r");                // 45 radians
      * Angle d = Angle.parse("45");                 // 45 degrees
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      *
      * @param string the angle to parse.
      * @return the parsed angle.
@@ -1203,7 +1203,7 @@ public class Angle implements Comparable<Angle>, Serializable {
      * </ul>
      * ... the angle will be adjusted so that neither of those statements are
      * true anymore. Pretty cool, right?
-     * </p>
+     *
      *
      * @return a newly fixed angle.
      */
@@ -1500,7 +1500,7 @@ public class Angle implements Comparable<Angle>, Serializable {
          *     <li>Short formatting: "rad"</li>
          *     <li>Long formatting: "radians"</li>
          * </ul>
-         * </p>
+         *
          */
         RADIANS,
 
@@ -1512,7 +1512,7 @@ public class Angle implements Comparable<Angle>, Serializable {
          *     <li>Short formatting: "deg"</li>
          *     <li>Long formatting: "degrees"</li>
          * </ul>
-         * </p>
+         *
          */
         DEGREES
     }

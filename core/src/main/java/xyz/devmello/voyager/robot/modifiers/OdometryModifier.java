@@ -25,7 +25,7 @@ import xyz.devmello.voyager.geometry.PointXYZ;
  *     <li>Reflect new Y</li>
  *     <li>Apply X, Y, and Z offsets</li>
  * </ul>
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.0.0

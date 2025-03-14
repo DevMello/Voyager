@@ -31,7 +31,7 @@ import xyz.devmello.voyager.time.Time;
  *     <li>Add an executor by adding a list of followers.</li>
  *     <li>Clear the entire list of executors.</li>
  * </ul>
- * </p>
+ *
  *
  * <p>
  * Executor managers are a relatively simple and limited method of managing

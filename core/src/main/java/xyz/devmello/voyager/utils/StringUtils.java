@@ -147,7 +147,7 @@ public class StringUtils {
      *     <li>%d: parse as double</li>
      *     <li>%s: parse as float</li>
      * </ul>
-     * </p>
+     *
      *
      * <p>
      * Any {@code percent} identifier can have a number to limit the length
@@ -260,7 +260,7 @@ public class StringUtils {
      *     <li>%d: parse as double</li>
      *     <li>%s: parse as float</li>
      * </ul>
-     * </p>
+     *
      *
      * <p>
      * Any {@code percent} identifier can have a number to limit the length
@@ -317,6 +317,8 @@ public class StringUtils {
      *
      * @param separator a string to separate objects.
      * @param objects   all of the objects that will be formatted.
+     * @param startString a string to prepend to the formatted array.
+     * @param endString   a string to append to the formatted array.
      * @return a formatted array of objects.
      */
     public static String formatArray(

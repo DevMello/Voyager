@@ -67,7 +67,7 @@ public interface Follower {
      *         this method.
      *     </li>
      * </ul>
-     * </p>
+     *
      *
      * @param current the robot's current position.
      * @param target  the robot's target point / marker.

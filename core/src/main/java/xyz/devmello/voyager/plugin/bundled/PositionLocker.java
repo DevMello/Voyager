@@ -35,7 +35,7 @@ import xyz.devmello.voyager.plugin.PathfinderPlugin;
  * pathfinder.getDataMap().put("is_locked", true);   // enable lock
  * pathfinder.getDataMap().put("is_locked", false);  // disable lock
  * }</pre>
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.10.4

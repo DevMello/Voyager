@@ -43,7 +43,7 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  *     <li>{@link #startPlayback(StateRecording)}</li>
  *     <li>{@link #stopPlayback()}</li>
  * </ul>
- * </p>
+ *
  *
  * <p>
  * By default, {@code StateRecorder} will automatically "optimize" ongoing

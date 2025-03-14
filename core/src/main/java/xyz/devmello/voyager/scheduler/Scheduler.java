@@ -42,7 +42,7 @@ import xyz.devmello.voyager.trajectory.Trajectory;
  *         {@link #tick()} method.
  *     </li>
  * </ul>
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.0.0

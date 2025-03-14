@@ -28,13 +28,13 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  *
  * <p>
  * Code example:
- * <code><pre>
+ * <pre>
  * Controller turnController = new ProportionalController(0.02);
  * double value = turnController.calculate(0, 1);
- * </pre></code>
+ * </pre>
  * In the above example, {@code value} would be equal to {@code 1 * -0.02}, or
  * more simply -0.02.
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.0.0

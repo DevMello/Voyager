@@ -179,7 +179,7 @@ public class Stopwatch {
      * 3: (lap 3 / stop time)
      * Elapsed: (elapsed time)
      * </pre>
-     * </p>
+     *
      *
      * @return a string representation of the {@code Stopwatch}.
      */

@@ -54,7 +54,7 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  * </ul>
  * Additionally, it's worth noting that most (possibly all) of the methods
  * in this class have a corresponding static method.
- * </p>
+ *
  *
  * @author Colin Robertson
  * @see PointXYZ
@@ -116,13 +116,13 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      *
      * <p>
      * Example format:
-     * <code><pre>
+     * <pre>
      * PointXY a = PointXY.parse("0, 0");                // (0, 0)
      * PointXY b = PointXY.parse("     1.0, .5 ");       // (1, 0.5)
      * PointXY c = PointXY.parse("10, 20,);              // (10, 20)
      * PointXY d = PointXY.parse("rawefawef10, 20,");    // (10, 20)
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      *
      * @param string the string to parse. See the JavaDoc for
      *               {@link PointXY#parse(String)} to learn more about the
@@ -418,13 +418,13 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      *
      * <p>
      * Code example:
-     * <code><pre>
+     * <pre>
      * double distance = PointXY.distance(
      *     new PointXY(0, 0),
      *     new PointXY(1, 1)
      * ); // distance is equal to sqrt2/2 (about 1.41)
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      *
      * @param a the first of the two points.
      * @param b the second of the two points.
@@ -448,13 +448,13 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      *
      * <p>
      * Code example:
-     * <code><pre>
+     * <pre>
      * double distance = PointXY.distanceX(
      *     new PointXY(0, 0),
      *     new PointXY(1, 1)
      * ); // distance is equal to 1
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      *
      * @param a the first of the two points.
      * @param b the second of the two points.
@@ -472,13 +472,13 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      *
      * <p>
      * Code example:
-     * <code><pre>
+     * <pre>
      * double distance = PointXY.distanceY(
      *     new PointXY(0, 0),
      *     new PointXY(1, 1)
      * ); // distance is equal to 1
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      *
      * @param a the first of the two points.
      * @param b the second of the two points.
@@ -496,7 +496,7 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      *
      * <p>
      * Code example:
-     * <code><pre>
+     * <pre>
      * PointXY a = new PointXY(0, 0);
      * PointXY b = new PointXY(1, 1);
      * PointXY c = new PointXY(1, 2);
@@ -505,8 +505,8 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      * Angle angleB = PointXY.angleTo(b, c); // 90 degrees
      * Angle angleC = PointXY.angleTo(b, a); // 135 degrees
      * Angle angleD = PointXY.angleTo(c, b); // 270 degrees
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      *
      * @param a the origin point.
      * @param b the target point.
@@ -522,7 +522,7 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      *
      * <p>
      * Code example:
-     * <code><pre>
+     * <pre>
      * PointXY a = new PointXY(0, 0);
      * PointXY b = new PointXY(1, 1);
      * PointXY c = new PointXY(1, 2);
@@ -531,8 +531,8 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      * Angle angleB = PointXY.angleTo(b, c); // 270 degrees
      * Angle angleC = PointXY.angleTo(b, a); // 45 degrees
      * Angle angleD = PointXY.angleTo(c, b); // 90 degrees
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      *
      * @param a the origin point.
      * @param b the target point.
@@ -1460,7 +1460,7 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      *
      * <p>
      * Code example:
-     * <code><pre>
+     * <pre>
      * PointXY a = new PointXY(0, 0);
      * PointXY b = new PointXY(1, 1);
      * PointXY c = new PointXY(1, 2);
@@ -1469,8 +1469,8 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      * Angle angleB = b.angleTo(c); // 90 degrees
      * Angle angleC = b.angleTo(a); // 135 degrees
      * Angle angleD = c.angleTo(b); // 270 degrees
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      *
      * @param a the point to determine the angle to.
      * @return the angle from this point to {@code a}.
@@ -1484,7 +1484,7 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      *
      * <p>
      * Code example:
-     * <code><pre>
+     * <pre>
      * PointXY a = new PointXY(0, 0);
      * PointXY b = new PointXY(1, 1);
      * PointXY c = new PointXY(1, 2);
@@ -1493,8 +1493,8 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      * Angle angleB = b.angleTo(c); // 270 degrees
      * Angle angleC = b.angleTo(a); // 45 degrees
      * Angle angleD = c.angleTo(b); // 90 degrees
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      *
      * @param a the point to determine the angle to.
      * @return the angle from this point to {@code a}.

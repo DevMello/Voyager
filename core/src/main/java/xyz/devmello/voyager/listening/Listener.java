@@ -70,7 +70,7 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  *         milliseconds.
  *     </li>
  * </ul>
- * </p>
+ *
  *
  * <p>
  * To simplify the creation of a {@code Listener}, check out the

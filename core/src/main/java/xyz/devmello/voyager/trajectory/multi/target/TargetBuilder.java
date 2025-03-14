@@ -26,7 +26,7 @@ import xyz.devmello.voyager.geometry.PointXYZ;
  *     <li>tolerance: 2</li>
  *     <li>angleTolerance: 5 degrees</li>
  * </ul>
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.4.0

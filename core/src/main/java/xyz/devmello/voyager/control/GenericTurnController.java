@@ -24,7 +24,7 @@ package xyz.devmello.voyager.control;
  * If you create a controller using the first method ({@link #newController(double)})
  * and notice that your robot is turning in the opposite direction than the
  * robot should be turning in, use {@link #newInvertedController(double)}.
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.1.0

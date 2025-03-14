@@ -32,7 +32,7 @@ import xyz.devmello.voyager.recording.Recordable;
  *     <li>0.0 power/speed: 0 RPM</li>
  *     <li>0.5 power/speed: RPM</li>
  * </ul>
- * </p>
+ *
  *
  * <p>
  * Unless the underlying motor implementation is capable of reading a power

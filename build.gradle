@@ -8,13 +8,13 @@ group = 'xyz.devmello.voyager'
 version = '1.0-SNAPSHOT'
 project.ext {
     projectName = 'xyz.devmello'
-    projectVersion = 'v1.0.0-ALPHA'
+    projectVersion = 'v1.0.1-ALPHA'
 }
 
 repositories {
     mavenCentral()
     maven {
-        url = 'https://jitpack.io'
+        url = uri("https://git.devmello.xyz/api/packages/devmello/maven")
     }
 }
 
@@ -64,3 +64,23 @@ spotless {
         trimTrailingWhitespace()
     }
 }
+
+publishing {
+    // other settings of publication
+    repositories {
+        maven {
+            name = "Gitea"
+            url = uri("https://git.devmello.xyz/api/packages/devmello/maven")
+
+            credentials(HttpHeaderCredentials) {
+                name = "Authorization"
+                value = "token f66aba5e554a6a9ab4eae992a881f64a0542fe64"
+            }
+
+            authentication {
+                header(HttpHeaderAuthentication)
+            }
+        }
+    }
+}
+

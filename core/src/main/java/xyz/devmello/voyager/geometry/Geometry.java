@@ -41,7 +41,7 @@ public class Geometry {
      *
      * <p>
      * This tolerance value is used like so:
-     * <code><pre>
+     * <pre>
      * public boolean equals(Object obj) {
      *     if (obj instanceof PointXY) {
      *         PointXY point = (PointXY) obj;
@@ -51,13 +51,13 @@ public class Geometry {
      *         boolean sameY = Equals.soft(y, point.y(),
      *                 Geometry.tolerancePointXY);
      *
-     *         return sameX && sameY;
+     *         return sameX &amp;&amp; sameY;
      *     }
      *
      *     return super.equals(obj);
      * }
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      */
     public static final double tolerancePointXY = 0.01;
 
@@ -66,7 +66,7 @@ public class Geometry {
      *
      * <p>
      * This tolerance value is used like so:
-     * <code><pre>
+     * <pre>
      * public boolean equals(Object obj) {
      *     if (obj instanceof PointXYZ) {
      *         PointXYZ point = (PointXYZ) obj;
@@ -76,13 +76,13 @@ public class Geometry {
      *         boolean sameY = Equals.soft(y, point.y(),
      *                 Geometry.tolerancePointXY);
      *
-     *         return sameX && sameY;
+     *         return sameX &amp;&amp; sameY;
      *     }
      *
      *     return super.equals(obj);
      * }
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      */
     public static final double tolerancePointXYZ = 0.01;
 

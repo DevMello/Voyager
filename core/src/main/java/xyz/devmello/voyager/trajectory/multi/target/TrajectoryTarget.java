@@ -45,7 +45,7 @@ import xyz.devmello.voyager.geometry.PointXYZ;
  *         this only impacts {@code PRECISE} trajectories.
  *     </li>
  * </ul>
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.4.0

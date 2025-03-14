@@ -41,7 +41,7 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  * the best positional accuracy. However, that's not really very realistic,
  * is it? An odometry system's only job is to provide information on the
  * position of the robot it belongs to.
- * </p>
+ *
  *
  * <p>
  * Another one of the neat features of the {@code Odometry} interface is

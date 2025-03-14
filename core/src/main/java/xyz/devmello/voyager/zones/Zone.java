@@ -35,7 +35,7 @@ import xyz.devmello.voyager.geometry.Shape;
  *     <li>{@link #onExit(Voyager)}</li>
  *     <li>{@link #whileInside(Voyager)}</li>
  * </ul>
- * </p>
+ *
  *
  * @author Colin Robertson
  * @author Pranav Yerramaneni

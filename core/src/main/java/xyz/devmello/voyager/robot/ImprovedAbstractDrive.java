@@ -20,7 +20,7 @@ import xyz.devmello.voyager.geometry.Translation;
  *
  * <p>
  * Here's an example implementation of this class.
- * <code><pre>
+ * <pre>
  * public class ExampleDrive extends ImprovedAbstractDrive {
  *     private final RelativeMecanumKinematics kinematics;
  *
@@ -43,7 +43,7 @@ import xyz.devmello.voyager.geometry.Translation;
  *         this.backLeft = backLeft;
  *     }
  *
- *     @Override
+ *
  *     public void abstractSetTranslation(Translation translation) {
  *         // code to set power to the motors would go here
  *         MecanumState state = kinematics.calculate(translation);
@@ -54,8 +54,8 @@ import xyz.devmello.voyager.geometry.Translation;
  *         backLeft.setPower(state.bl());
  *     }
  * }
- * </pre></code>
- * </p>
+ * </pre>
+ *
  *
  * @author Colin Robertson
  * @since 1.4.2

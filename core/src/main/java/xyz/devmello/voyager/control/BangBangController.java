@@ -31,7 +31,7 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  *     </li>
  * </ul>
  * The controller's "input" is specified by {@code getTarget() - value}.
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 2.1.1

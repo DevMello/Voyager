@@ -24,7 +24,7 @@ package xyz.devmello.voyager.time;
  *     <li>{@link #runThenWait(Runnable, double)}</li>
  *     <li>{@link #runFor(Runnable, double)}</li>
  * </ul>
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.2.4

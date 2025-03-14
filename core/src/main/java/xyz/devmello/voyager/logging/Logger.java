@@ -30,7 +30,7 @@ import xyz.devmello.voyager.utils.StringUtils;
  *     <li>{@link #useSystemOutput()}</li>
  *     <li>{@link #setOutput(Consumer)}</li>
  * </ul>
- * </p>
+ *
  *
  * <p>
  * All of the log outputs included in Pathfinder's source code can be
@@ -46,7 +46,7 @@ import xyz.devmello.voyager.utils.StringUtils;
  * with severity levels of {@code WARN} or above ({@code ERROR} and
  * {@code FATAL}) if something has gone wrong enough that you should probably
  * know about it.
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 2.0.0

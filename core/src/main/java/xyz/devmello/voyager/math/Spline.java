@@ -54,7 +54,7 @@ import xyz.devmello.voyager.geometry.PointXY;
  *     <li>x = 10, y = 10</li>
  * </ul>
  * As you can see, the X values simply have to go in the same direction.
- * </p>
+ *
  *
  * @author Colin Robertson
  * @since 0.0.0

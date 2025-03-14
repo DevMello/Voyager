@@ -36,7 +36,7 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  * A translation with a Y value of 1 would make the robot go "forwards,"
  * forwards, of course, meaning whatever direction the robot "thinks"
  * is forwards - not absolute positioning.
- * </p>
+ *
  *
  * <p>
  * In almost all Pathfinder-specific use cases, {@code Translation}s will
@@ -60,7 +60,7 @@ import xyz.devmello.voyager.utils.ValidationUtils;
  *         by using the robot's current heading.
  *     </li>
  * </ul>
- * </p>
+ *
  *
  * <p>
  * {@code Translation}s are the core of Pathfinder's movement. Robots operate
@@ -215,12 +215,12 @@ public class Translation implements Serializable {
      *
      * <p>
      * Examples:
-     * <code><pre>
+     * <pre>
      * Translation a = Translation.parse("0, 0, 0");        // (0, 0, 0)
      * Translation a = Translation.parse("1, 0, 0");        // (1, 0, 0)
      * Translation a = Translation.parse("0.5, 0.3, 0.1");  // (0.5, 0.3, 0.1)
-     * </pre></code>
-     * </p>
+     * </pre>
+     *
      *
      * @param string the string to parse.
      * @return the parsed {@code Translation}.
