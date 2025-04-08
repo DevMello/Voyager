@@ -13,6 +13,8 @@ package xyz.devmello.voyager.recording;
 import xyz.devmello.voyager.Voyager;
 import xyz.devmello.voyager.time.Time;
 
+import java.io.File;
+
 /**
  * Used for recording Pathfinder's movement.
  *
@@ -99,5 +101,9 @@ public class MovementRecorder {
 
     public void setMinDelayMs(double minDelayMs) {
         this.minDelayMs = minDelayMs;
+    }
+
+    public boolean saveRecording(File file) {
+        return recording.save(file);
     }
 }

@@ -88,7 +88,7 @@ public class AutoRotator implements Function<Translation, Translation> {
     }
 
     public void disable() {
-        isActive = true;
+        isActive = false;
     }
 
     @Override

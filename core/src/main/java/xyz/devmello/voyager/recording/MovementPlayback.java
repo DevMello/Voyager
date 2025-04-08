@@ -11,7 +11,13 @@
 package xyz.devmello.voyager.recording;
 
 import xyz.devmello.voyager.Voyager;
+import xyz.devmello.voyager.logging.Logger;
 import xyz.devmello.voyager.time.Time;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Used in conjunction with {@link MovementRecorder} to make Pathfinder
@@ -50,6 +56,15 @@ public class MovementPlayback {
     }
 
     /**
+     * Start playing back a movement recording.
+     *
+     * @param file the file to load the recording from.
+     */
+    public void startPlayback(File file) {
+        startPlayback(new MovementRecording(file));
+    }
+
+    /**
      * Stop the playback of a movement recording.
      */
     public void stopPlayback() {
@@ -71,5 +86,29 @@ public class MovementPlayback {
             lastSwitchMs = currentMs;
             if (lastIndex >= recording.getRecording().size()) stopPlayback();
         }
+    }
+
+    /**
+     * Load a recording from a file. This will read the contents of the
+     * supplied file and create a new {@link List<MovementRecord>} object.
+     *
+     * @param file the file to load from.
+     * @return a new {@link List<MovementRecord>} object.
+     */
+    public List<MovementRecord> load(File file) {
+        if (file == null) {
+            throw new NullPointerException("file cannot be null");
+        }
+        List<MovementRecord> recording = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                MovementRecord record = MovementRecord.parse(line);
+                recording.add(record);
+            }
+        } catch (Exception e) {
+            Logger.error(MovementRecording.class, "Error loading recording (" +file.getName()+ "): "  + e.getMessage());
+        }
+        return recording;
     }
 }

@@ -1,29 +1,13 @@
 plugins {
-    id 'java'
+    id "com.android.library" version "8.1.2"
 }
 
 group = 'xyz.devmello.voyager'
 version = '1.1-ALPHA'
 
-tasks {
-    compileJava {
-        sourceCompatibility = 1.8
-        targetCompatibility = 1.8
-    }
-}
-
-
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(8)
-    }
-
-    withJavadocJar()
-    withSourcesJar()
-}
 repositories {
     mavenCentral()
+    google()
 }
 
 dependencies {
@@ -31,19 +15,50 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     compileOnly 'org.apache.commons:commons-math3:3.6.1'
     compileOnly group: 'org.ejml', name: 'ejml-all', version: '0.40'
+    compileOnly("org.firstinspires.ftc:RobotCore:10.2.0")
+    compileOnly("org.firstinspires.ftc:Hardware:10.2.0")
+    compileOnly("org.firstinspires.ftc:FtcCommon:10.2.0")
+    compileOnly("org.firstinspires.ftc:RobotServer:10.2.0")
+    compileOnly("org.firstinspires.ftc:OnBotJava:10.2.0")
 }
 
-test {
-    useJUnitPlatform()
-}
+android {
+    namespace = "xyz.devmello.voyager"
+    compileSdkVersion 30
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = project.group
-            version = project.version
-            artifactId = 'core'
-            from components.java
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    publishing {
+        singleVariant("release")
+    }
+
+    defaultConfig {
+        minSdkVersion 24
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 30
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
         }
     }
 }
+
+publishing {
+    // other settings of publication
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/DevMello/Voyager")
+
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+        }
+    }
+}
+

@@ -1,7 +1,8 @@
+
 plugins {
-    id 'java'
     id 'maven-publish'
-    id 'com.diffplug.spotless' version '6.3.0'
+    id "com.android.library" version "8.1.2"
+
 }
 
 group = 'xyz.devmello.voyager'
@@ -13,73 +14,52 @@ project.ext {
 
 repositories {
     mavenCentral()
+    google()
     maven {
         url = uri("https://git.devmello.xyz/api/packages/devmello/maven")
     }
 }
 
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
-
-test {
-    useJUnitPlatform()
-}
-
 allprojects {
     group = project.projectName
     version = project.projectVersion
-
-    java {
-        withJavadocJar()
-        withSourcesJar()
-    }
 }
 
-spotless {
-    java {
-        target fileTree('.') {
-            include '**/*.java'
-            exclude '**/build/**', '**/build-*/**'
+dependencies {
+    implementation project(':core')
+}
+
+android {
+	namespace = "xyz.devmello.voyager"
+	compileSdk = 30
+
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_1_8
+		targetCompatibility = JavaVersion.VERSION_1_8
+	}
+	publishing {
+		singleVariant("release")
+	}
+	sourceSets {
+		core {
+            java.srcDirs = ['core/src/main/java']
         }
-
-        indentWithSpaces()
-        trimTrailingWhitespace()
-        endWithNewline()
-
-        prettier([
-                'prettier': '2.0.5',
-                'prettier-plugin-java': '0.8.0'
-        ]).configFile('.prettierrc.yml')
-    }
-
-    groovyGradle {
-        target fileTree('.') {
-            include '**/*.gradle'
-            exclude '**/build/**', '**/build-*/**'
-        }
-
-        indentWithSpaces()
-        trimTrailingWhitespace()
-    }
+	}
+	defaultConfig {
+		minSdk = 23
+	}
 }
 
 publishing {
     // other settings of publication
     repositories {
         maven {
-            name = "Gitea"
-            url = uri("https://git.devmello.xyz/api/packages/devmello/maven")
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/DevMello/Voyager")
 
-            credentials(HttpHeaderCredentials) {
-                name = "Authorization"
-                value = "token ${project.findProperty('gitea.token')}"
-
-            }
-
-            authentication {
-                header(HttpHeaderAuthentication)
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
         }
     }

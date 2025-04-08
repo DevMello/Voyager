@@ -95,4 +95,39 @@ public class MovementRecord implements Serializable {
     public void setTranslation(Translation translation) {
         this.translation = translation;
     }
+
+    @Override
+    public String toString() {
+        return "MovementRecord{" +
+            "position=" + position +
+            ", velocity=" + velocity +
+            ", elapsedMs=" + elapsedMs +
+            ", translation=" + translation +
+            '}';
+    }
+
+
+    /**
+     * Build a {@code MovementRecord} from a string. The string should be in
+     * the format of:
+     * <pre>
+     * position=PointXYZ, velocity=double, elapsedMs=double, translation=Translation
+     * </pre>
+     *
+     * @param record the string to build the record from.
+     * @return the built {@code MovementRecord}.
+     */
+    public static MovementRecord parse(String record) {
+        String[] parts = record.split(",");
+        if (parts.length != 4) {
+            throw new IllegalArgumentException("Invalid record format");
+        }
+
+        PointXYZ position = PointXYZ.parse(parts[0].substring(parts[0].indexOf("=") + 1));
+        double velocity = Double.parseDouble(parts[1].substring(parts[1].indexOf("=") + 1));
+        double elapsedMs = Double.parseDouble(parts[2].substring(parts[2].indexOf("=") + 1));
+        Translation translation = Translation.parse(parts[3].substring(parts[3].indexOf("=") + 1));
+
+        return new MovementRecord(position, velocity, elapsedMs, translation);
+    }
 }
