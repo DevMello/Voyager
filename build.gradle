@@ -1,15 +1,12 @@
-
 plugins {
     id 'maven-publish'
     id "com.android.library" version "8.1.2"
-
 }
 
-group = 'xyz.devmello.voyager'
-version = '1.0-SNAPSHOT'
+
 project.ext {
     projectName = 'xyz.devmello'
-    projectVersion = 'v1.0.1-ALPHA'
+    projectVersion = 'v1.2-ALPHA'
 }
 
 repositories {
@@ -26,32 +23,40 @@ allprojects {
 }
 
 dependencies {
-    implementation project(':core')
+    implementation project(':core')  // Ensure the 'core' module is correctly added
 }
 
 android {
-	namespace = "xyz.devmello.voyager"
-	compileSdk = 30
+    namespace = "xyz.devmello.voyager"
+    compileSdk = 30
 
-	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_1_8
-		targetCompatibility = JavaVersion.VERSION_1_8
-	}
-	publishing {
-		singleVariant("release")
-	}
-	sourceSets {
-		core {
-            java.srcDirs = ['core/src/main/java']
-        }
-	}
-	defaultConfig {
-		minSdk = 23
-	}
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    publishing {
+        singleVariant("release")
+    }
+
+    defaultConfig {
+        minSdk = 23
+    }
 }
 
 publishing {
-    // other settings of publication
+    publications {
+        maven(MavenPublication) {
+            groupId = project.projectName
+            artifactId = "voyager"
+            version = project.projectVersion
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
+    // Other settings for publication
     repositories {
         maven {
             name = "GitHubPackages"
@@ -62,6 +67,20 @@ publishing {
                 password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
         }
+
+        maven {
+            name = "Gitea"
+            url = uri("https://git.devmello.xyz/api/packages/devmello/maven")
+
+
+            credentials(HttpHeaderCredentials) {
+                name = "Authorization"
+                value = "token ${project.findProperty('gitea.token')}"
+            }
+
+            authentication {
+                header(HttpHeaderAuthentication)
+            }
+        }
     }
 }
-

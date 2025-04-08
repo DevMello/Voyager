@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'xyz.devmello.voyager'
-version = '1.1-ALPHA'
+version = '1.2-ALPHA'
 
 repositories {
     mavenCentral()
@@ -47,18 +47,18 @@ android {
     }
 }
 
+
 publishing {
-    // other settings of publication
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/DevMello/Voyager")
-
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-            }
-        }
+    publications {
+//        maven(MavenPublication) {
+//            groupId = "xyz.devmello"
+//            artifactId = "voyager"
+//            version = "1.2-ALPHA"
+//
+//            afterEvaluate {
+//                from(components["release"])
+//            }
+//        }
     }
-}
 
+}
