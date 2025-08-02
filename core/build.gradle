@@ -50,15 +50,14 @@ android {
 
 publishing {
     publications {
-//        maven(MavenPublication) {
-//            groupId = "xyz.devmello"
-//            artifactId = "voyager"
-//            version = "1.2-ALPHA"
-//
-//            afterEvaluate {
-//                from(components["release"])
-//            }
-//        }
-    }
+        maven(MavenPublication) {
+            groupId = "xyz.devmello.voyager"
+            artifactId = "core"
+            version = "1.2-ALPHA"
 
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }
