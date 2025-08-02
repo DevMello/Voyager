@@ -51,8 +51,8 @@ android {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = "xyz.devmello.voyager"
-            artifactId = "core"
+            groupId = "xyz.devmello"
+            artifactId = "voyager"
             version = "1.2-ALPHA"
 
             afterEvaluate {
