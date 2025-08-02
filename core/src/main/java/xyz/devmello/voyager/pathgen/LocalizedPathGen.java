@@ -113,7 +113,7 @@ public class LocalizedPathGen {
 
         List<PointXY> points = grid.toPoints(gen.findCoordPath());
 
-        if (points.size() < 1) return null;
+        if (points.isEmpty()) return null;
 
         if (!points.get(0).equals(start)) points.add(0, start);
         if (!points.get(points.size() - 1).equals(end)) points.add(end);

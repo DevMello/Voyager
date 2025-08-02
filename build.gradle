@@ -13,7 +13,7 @@ repositories {
     mavenCentral()
     google()
     maven {
-        url = uri("https://git.devmello.xyz/api/packages/devmello/maven")
+        url = uri("https://jitpack.io")
     }
 }
 
@@ -57,30 +57,30 @@ publishing {
         }
     }
     // Other settings for publication
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/DevMello/Voyager")
-
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-            }
-        }
-
-        maven {
-            name = "Gitea"
-            url = uri("https://git.devmello.xyz/api/packages/devmello/maven")
-
-
-            credentials(HttpHeaderCredentials) {
-                name = "Authorization"
-                value = "token ${project.findProperty('gitea.token')}"
-            }
-
-            authentication {
-                header(HttpHeaderAuthentication)
-            }
-        }
-    }
+//    repositories {
+//        maven {
+//            name = "GitHubPackages"
+//            url = uri("https://maven.pkg.github.com/DevMello/Voyager")
+//
+//            credentials {
+//                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+//                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+//            }
+//        }
+//
+//        maven {
+//            name = "Gitea"
+//            url = uri("https://git.devmello.xyz/api/packages/devmello/maven")
+//
+//
+//            credentials(HttpHeaderCredentials) {
+//                name = "Authorization"
+//                value = "token ${project.findProperty('gitea.token')}"
+//            }
+//
+//            authentication {
+//                header(HttpHeaderAuthentication)
+//            }
+//        }
+//    }
 }
