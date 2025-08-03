@@ -11,7 +11,7 @@
 package xyz.devmello.voyager.math;
 
 import java.io.Serializable;
-import xyz.devmello.voyager.geometry.Geometry;
+import xyz.devmello.voyager.math.geometry.Geometry;
 import xyz.devmello.voyager.utils.StringUtils;
 import xyz.devmello.voyager.utils.ValidationUtils;
 

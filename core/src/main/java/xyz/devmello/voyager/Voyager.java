@@ -12,47 +12,38 @@ package xyz.devmello.voyager;
 
 import java.util.*;
 import java.util.function.*;
-import xyz.devmello.voyager.control.Controller;
-import xyz.devmello.voyager.control.ProportionalController;
-import xyz.devmello.voyager.exceptions.*;
+import xyz.devmello.voyager.math.control.Controller;
+import xyz.devmello.voyager.math.control.ProportionalController;
+import xyz.devmello.voyager.logging.exceptions.*;
 import xyz.devmello.voyager.execution.ExecutorManager;
-import xyz.devmello.voyager.follower.Follower;
-import xyz.devmello.voyager.follower.FollowerGenerator;
-import xyz.devmello.voyager.follower.generators.GenericFollowerGenerator;
-import xyz.devmello.voyager.geometry.Angle;
-import xyz.devmello.voyager.geometry.PointXY;
-import xyz.devmello.voyager.geometry.PointXYZ;
-import xyz.devmello.voyager.geometry.Translation;
-import xyz.devmello.voyager.listening.Listener;
-import xyz.devmello.voyager.listening.ListenerBuilder;
-import xyz.devmello.voyager.listening.ListenerManager;
-import xyz.devmello.voyager.listening.ListenerMode;
+import xyz.devmello.voyager.execution.follower.Follower;
+import xyz.devmello.voyager.execution.follower.FollowerGenerator;
+import xyz.devmello.voyager.execution.follower.generators.GenericFollowerGenerator;
+import xyz.devmello.voyager.math.geometry.Angle;
+import xyz.devmello.voyager.math.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.PointXYZ;
+import xyz.devmello.voyager.math.geometry.Translation;
+
 import xyz.devmello.voyager.logging.Logger;
 import xyz.devmello.voyager.math.Spline;
-import xyz.devmello.voyager.math.Velocity;
-import xyz.devmello.voyager.movement.MovementProfiler;
 import xyz.devmello.voyager.plugin.PathfinderPlugin;
 import xyz.devmello.voyager.plugin.PathfinderPluginManager;
 import xyz.devmello.voyager.plugin.bundled.PositionLocker;
 import xyz.devmello.voyager.plugin.bundled.StatTracker;
-import xyz.devmello.voyager.prebuilt.AutoRotator;
-import xyz.devmello.voyager.prebuilt.HeadingLock;
-import xyz.devmello.voyager.recording.*;
+import xyz.devmello.voyager.plugin.prebuilt.AutoRotator;
+import xyz.devmello.voyager.plugin.prebuilt.HeadingLock;
 import xyz.devmello.voyager.robot.Drive;
 import xyz.devmello.voyager.robot.Odometry;
 import xyz.devmello.voyager.robot.Robot;
-import xyz.devmello.voyager.robot.simulated.*;
-import xyz.devmello.voyager.scheduler.Scheduler;
-import xyz.devmello.voyager.scheduler.Task;
-import xyz.devmello.voyager.time.ElapsedTimer;
-import xyz.devmello.voyager.time.Stopwatch;
-import xyz.devmello.voyager.time.Time;
-import xyz.devmello.voyager.trajectory.LinearTrajectory;
-import xyz.devmello.voyager.trajectory.TaskTrajectory;
-import xyz.devmello.voyager.trajectory.TaskTrajectoryBuilder;
-import xyz.devmello.voyager.trajectory.Trajectory;
-import xyz.devmello.voyager.trajectory.spline.AdvancedSplineTrajectoryBuilder;
-import xyz.devmello.voyager.trajectory.spline.MultiSplineBuilder;
+import xyz.devmello.voyager.utils.time.ElapsedTimer;
+import xyz.devmello.voyager.utils.time.Stopwatch;
+import xyz.devmello.voyager.utils.time.Time;
+import xyz.devmello.voyager.execution.trajectory.LinearTrajectory;
+import xyz.devmello.voyager.execution.trajectory.TaskTrajectory;
+import xyz.devmello.voyager.execution.trajectory.TaskTrajectoryBuilder;
+import xyz.devmello.voyager.execution.trajectory.Trajectory;
+import xyz.devmello.voyager.execution.trajectory.spline.AdvancedSplineTrajectoryBuilder;
+import xyz.devmello.voyager.execution.trajectory.spline.MultiSplineBuilder;
 import xyz.devmello.voyager.utils.*;
 import xyz.devmello.voyager.zones.Zone;
 import xyz.devmello.voyager.zones.ZoneProcessor;
@@ -82,9 +73,6 @@ import xyz.devmello.voyager.zones.ZoneProcessor;
  *     <li>{@link #getDrive()}</li>
  *     <li>{@link #getExecutorManager()}</li>
  *     <li>{@link #getPluginManager()}</li>
- *     <li>{@link #getPlayback()}</li>
- *     <li>{@link #getMovementRecorder()}</li>
- *     <li>{@link #getListenerManager()}</li>
  * </ul>
  * Many of these can be disabled using minimal mode, which is explained in
  * the next paragraph.
@@ -113,17 +101,6 @@ import xyz.devmello.voyager.zones.ZoneProcessor;
  * check out: {@link #setIsMinimal(boolean)}
  * </p>
  *
- * <p>
- * Using {@link StateRecorder}, Pathfinder can record the state of your robot,
- * allowing you to play it back later. This is different from movement
- * recording in that it records the state of several components of your robot
- * (ex: every motor) and plays back that exact state, removing any room for
- * error in playing back an existing path. To get started, first add some
- * {@link Recordable} nodes using {@link #addRecordable(String, Recordable)}.
- * Next, use {@link #getRecorder()} to access the {@link StateRecorder}.
- * From there, check out the documentation in the {@link StateRecorder} class
- * to learn how to record and play back the state of your robot.
- * </p>
  *
  * @author Colin Robertson
  * @author Pranav Yerramaneni
@@ -191,40 +168,12 @@ public class Voyager {
      */
     private final ZoneProcessor zoneProcessor;
 
-    /**
-     * A scheduler for executing tasks.
-     */
-    private final Scheduler scheduler;
-
-    /**
-     * A manager for recording Pathfinder's movement.
-     */
-    private final MovementRecorder movementRecorder;
-
-    /**
-     * A manager for playing back recordings.
-     */
-    private final MovementPlayback playback;
-
-    /**
-     * A manager used for recording the state of several {@code Recordable}s.
-     */
-    private final StateRecorder recorder;
 
     /**
      * A manager for {@link PathfinderPlugin}s.
      */
     private final PathfinderPluginManager pluginManager;
 
-    /**
-     * Used in recording information about the robot's motion.
-     */
-    private final MovementProfiler profiler;
-
-    /**
-     * Used in event listeners.
-     */
-    private final ListenerManager listenerManager;
 
     /**
      * A modifiable map of operations to be run after every tick.
@@ -274,13 +223,7 @@ public class Voyager {
      * <ul>
      *     <li>{@link ExecutorManager}</li>
      *     <li>{@link ZoneProcessor}</li>
-     *     <li>{@link Scheduler}</li>
-     *     <li>{@link MovementRecorder}</li>
-     *     <li>{@link MovementPlayback}</li>
-     *     <li>{@link StateRecorder}</li>
      *     <li>{@link PathfinderPluginManager}</li>
-     *     <li>{@link MovementProfiler}</li>
-     *     <li>{@link ListenerManager}</li>
      * </ul>
      * There's a very good chance you're not going to need some or all of those,
      * and that's okay - you simply don't have to worry about them and everything
@@ -312,9 +255,6 @@ public class Voyager {
      *     }
      * }
      * </pre>
-     * Obviously, you shouldn't uses {@link SimulatedOdometry} or
-     * {@link SimulatedDrive} for an actual robot, because then nothing
-     * would work. But you get the point.
      *
      *
      * @param robot          the {@code Pathfinder} instance's robot. This robot
@@ -371,14 +311,7 @@ public class Voyager {
         this.turnController = turnController;
         this.executorManager = new ExecutorManager(robot);
         this.zoneProcessor = new ZoneProcessor();
-        this.scheduler = new Scheduler(this);
-        this.movementRecorder =
-            new MovementRecorder(this, Core.movementRecorderMinDelayMs);
-        this.playback = new MovementPlayback(this);
-        this.recorder = new StateRecorder();
         this.pluginManager = new PathfinderPluginManager();
-        this.profiler = new MovementProfiler();
-        this.listenerManager = new ListenerManager(this);
         this.onTickOperations = new HashMap<>();
         this.dataMap = new HashMap<>();
 
@@ -403,13 +336,7 @@ public class Voyager {
      * <ul>
      *     <li>{@link ExecutorManager}</li>
      *     <li>{@link ZoneProcessor}</li>
-     *     <li>{@link Scheduler}</li>
-     *     <li>{@link MovementRecorder}</li>
-     *     <li>{@link MovementPlayback}</li>
-     *     <li>{@link StateRecorder}</li>
      *     <li>{@link PathfinderPluginManager}</li>
-     *     <li>{@link MovementProfiler}</li>
-     *     <li>{@link ListenerManager}</li>
      * </ul>
      * There's a very good chance you're not going to need some or all of those,
      * and that's okay - you simply don't have to worry about them and everything
@@ -439,9 +366,6 @@ public class Voyager {
      *     }
      * }
      * </pre>
-     * Obviously, you shouldn't uses {@link SimulatedOdometry} or
-     * {@link SimulatedDrive} for an actual robot, because then nothing
-     * would work. But you get the point.
      *
      */
     public Voyager(
@@ -480,13 +404,7 @@ public class Voyager {
      * <ul>
      *     <li>{@link ExecutorManager}</li>
      *     <li>{@link ZoneProcessor}</li>
-     *     <li>{@link Scheduler}</li>
-     *     <li>{@link MovementRecorder}</li>
-     *     <li>{@link MovementPlayback}</li>
-     *     <li>{@link StateRecorder}</li>
      *     <li>{@link PathfinderPluginManager}</li>
-     *     <li>{@link MovementProfiler}</li>
-     *     <li>{@link ListenerManager}</li>
      * </ul>
      * There's a very good chance you're not going to need some or all of those,
      * and that's okay - you simply don't have to worry about them and everything
@@ -513,9 +431,6 @@ public class Voyager {
      *     }
      * }
      * </pre>
-     * Obviously, you shouldn't uses {@link SimulatedOdometry} or
-     * {@link SimulatedDrive} for an actual robot, because then nothing
-     * would work. But you get the point.
      *
      *
      * @param robot          the {@code Pathfinder} instance's robot. This robot
@@ -545,13 +460,7 @@ public class Voyager {
      * <ul>
      *     <li>{@link ExecutorManager}</li>
      *     <li>{@link ZoneProcessor}</li>
-     *     <li>{@link Scheduler}</li>
-     *     <li>{@link MovementRecorder}</li>
-     *     <li>{@link MovementPlayback}</li>
-     *     <li>{@link StateRecorder}</li>
      *     <li>{@link PathfinderPluginManager}</li>
-     *     <li>{@link MovementProfiler}</li>
-     *     <li>{@link ListenerManager}</li>
      * </ul>
      * There's a very good chance you're not going to need some or all of those,
      * and that's okay - you simply don't have to worry about them and everything
@@ -575,9 +484,6 @@ public class Voyager {
      *     }
      * }
      * </pre>
-     * Obviously, you shouldn't uses {@link SimulatedOdometry} or
-     * {@link SimulatedDrive} for an actual robot, because then nothing
-     * would work. But you get the point.
      *
      *
      * @param robot       the {@code Pathfinder} instance's robot. This robot
@@ -609,44 +515,6 @@ public class Voyager {
         );
     }
 
-    /**
-     * Create a new, "simulated" instance of Pathfinder.
-     *
-     * <p>
-     * This is pretty much only useful for debugging or testing purposes.
-     * </p>
-     *
-     * @param coefficient the coefficient to use for the turn controller.
-     * @return a new instance of Pathfinder, having a {@link Drive} of
-     * {@link SimulatedDrive} and {@link Odometry} of {@link SimulatedOdometry}.
-     */
-    public static Voyager newSimulatedPathfinder(double coefficient) {
-        Robot robot = new SimulatedRobot();
-
-        return new Voyager(robot, coefficient)
-            .setSpeed(0.5)
-            .setTolerance(2)
-            .setAngleTolerance(Angle.fromDeg(5));
-    }
-
-    /**
-     * Create a new, "empty" instance of Pathfinder.
-     *
-     * <p>
-     * This is pretty much only useful for debugging or testing purposes.
-     * </p>
-     *
-     * @param coefficient the coefficient to use for the turn controller.
-     * @return a new instance of Pathfinder that makes use of both the
-     * {@link EmptyDrive} and {@link EmptyOdometry} classes.
-     */
-    public static Voyager newEmptyPathfinder(double coefficient) {
-        Drive drive = new EmptyDrive();
-        Odometry odometry = new EmptyOdometry();
-        Robot robot = new Robot(drive, odometry);
-
-        return new Voyager(robot, coefficient);
-    }
 
     /**
      * Add a plugin to Pathfinder's list of automatically loading plugins.
@@ -992,74 +860,6 @@ public class Voyager {
     }
 
     /**
-     * Get the {@code Pathfinder} instance's {@link MovementProfiler}.
-     *
-     * @return the {@link MovementProfiler}.
-     */
-    public MovementProfiler getProfiler() {
-        return profiler;
-    }
-
-    /**
-     * Get the {@code Pathfinder} instance's {@link ListenerManager}.
-     *
-     * @return the {@link ListenerManager}.
-     */
-    public ListenerManager getListenerManager() {
-        return listenerManager;
-    }
-
-    /**
-     * Add a listener to the listener manager.
-     *
-     * @param name     the name of the listener. This can usually just be
-     *                 completely random, unless there's a need for it to
-     *                 be something specific.
-     * @param listener the listener that will be added.
-     * @return {@code this}, used for method chaining.
-     */
-    public Voyager addListener(String name, Listener listener) {
-        listenerManager.addListener(name, listener);
-
-        return this;
-    }
-
-    /**
-     * Add a listener to the listener manager.
-     *
-     * @param listener the listener that will be added.
-     * @return {@code this}, used for method chaining.
-     */
-    public Voyager addListener(Listener listener) {
-        return addListener(
-            RandomString.randomString(Core.pathfinderRandomStringLength),
-            listener
-        );
-    }
-
-    /**
-     * Add a listener.
-     *
-     * @param condition the condition that must be true in order for the
-     *                  listener to be executed.
-     * @param action    a piece of functionality to be executed whenever the
-     *                  condition is met.
-     * @return {@code this}, used for method chaining.
-     */
-    @SuppressWarnings("unchecked")
-    public Voyager addListener(Predicate<Voyager> condition, Runnable action) {
-        Voyager voyager = this;
-
-        return addListener(
-            new Listener(
-                ListenerMode.CONDITION_IS_MET,
-                action,
-                () -> condition.test(voyager)
-            )
-        );
-    }
-
-    /**
      * Get the speed at which Pathfinder will generate new linear followers.
      * This speed value is entirely irrelevant if you only generate custom
      * trajectories. It only applies to the {@link #goTo(PointXY)} and the
@@ -1233,161 +1033,6 @@ public class Voyager {
     }
 
     /**
-     * Get Pathfinder's {@code Scheduler}.
-     *
-     * @return a {@link Scheduler}.
-     */
-    public Scheduler getScheduler() {
-        return scheduler;
-    }
-
-    /**
-     * Queue a single task.
-     *
-     * @param task the task the scheduler should execute.
-     * @see Scheduler
-     */
-    public Voyager queueTask(Task task) {
-        scheduler.queueTask(task);
-
-        return this;
-    }
-
-    /**
-     * Queue an array of tasks.
-     *
-     * @param tasks the array of tasks the scheduler should execute.
-     * @see Scheduler
-     */
-    public Voyager queueTasks(Task... tasks) {
-        scheduler.queueTasks(tasks);
-
-        return this;
-    }
-
-    /**
-     * Queue a list of tasks.
-     *
-     * @param tasks the list of tasks the scheduler should execute.
-     * @see Scheduler
-     */
-    public Voyager queueTasks(List<Task> tasks) {
-        scheduler.queueTasks(tasks);
-
-        return this;
-    }
-
-    /**
-     * Stop the {@code Scheduler} from doing anything at all. If the scheduler
-     * is currently automatically ticking, this will stop it from doing
-     * so.
-     */
-    public Voyager clearTasks() {
-        scheduler.clear();
-
-        return this;
-    }
-
-    /**
-     * Get Pathfinder's movement recorder.
-     *
-     * <ul>
-     *     <li>
-     *         Start recording by getting Pathfinder's recorder and using the
-     *         {@link MovementRecorder#start()} method. This will reset the current
-     *         recording (so if you recorded something and then want to start over,
-     *         this is how you would do that) and set the
-     *         {@code isRecording} boolean to true. While this is true, whenever
-     *         you call {@link Voyager#tick()}, the recorder will record
-     *         information on Pathfinder's current movement.
-     *     </li>
-     *     <li>
-     *         Once you've finished recording, use the {@link MovementRecorder#stop()}
-     *         method to stop recording information. You can access this recorded
-     *         data by using the {@link MovementRecorder#getRecording()} method.
-     *     </li>
-     *     <li>
-     *         Now, to play back movement, it's pretty simple. You just use the
-     *         {@link MovementPlayback#startPlayback(MovementRecording)} method
-     *         to start the playback, and then use {@link Voyager#tick()} to
-     *         continue playing the movement back.
-     *     </li>
-     *     <li>
-     *         Because everything is done on a single thread, it's quite easy
-     *         to stop or start recording, and you won't have any issues with
-     *         doing just that.
-     *     </li>
-     * </ul>
-     *
-     * @return Pathfinder's movement recorder.
-     */
-    public MovementRecorder getMovementRecorder() {
-        return movementRecorder;
-    }
-
-    /**
-     * Get Pathfinder's movement playback manager.
-     *
-     * <ul>
-     *     <li>
-     *         Start recording by getting Pathfinder's recorder and using the
-     *         {@link MovementRecorder#start()} method. This will reset the current
-     *         recording (so if you recorded something and then want to start over,
-     *         this is how you would do that) and set the
-     *         {@code isRecording} boolean to true. While this is true, whenever
-     *         you call {@link Voyager#tick()}, the recorder will record
-     *         information on Pathfinder's current movement.
-     *     </li>
-     *     <li>
-     *         Once you've finished recording, use the {@link MovementRecorder#stop()}
-     *         method to stop recording information. You can access this recorded
-     *         data by using the {@link MovementRecorder#getRecording()} method.
-     *     </li>
-     *     <li>
-     *         Now, to play back movement, it's pretty simple. You just use the
-     *         {@link MovementPlayback#startPlayback(MovementRecording)} method
-     *         to start the playback, and then use {@link Voyager#tick()} to
-     *         continue playing the movement back.
-     *     </li>
-     *     <li>
-     *         Because everything is done on a single thread, it's quite easy
-     *         to stop or start recording, and you won't have any issues with
-     *         doing just that.
-     *     </li>
-     * </ul>
-     *
-     * @return Pathfinder's movement playback manager.
-     */
-    public MovementPlayback getPlayback() {
-        return playback;
-    }
-
-    /**
-     * Get Pathfinder's {@code StateRecorder} instance. In order to record,
-     * you first need to add recordable nodes. To add a node to this
-     * {@code StateRecorder}, use {@link #addRecordable(String, Recordable)}.
-     *
-     * @return Pathfinder's {@code StateRecorder}.
-     */
-    public StateRecorder getRecorder() {
-        return recorder;
-    }
-
-    /**
-     * Add a {@code Recordable} to Pathfinder's {@code StateRecorder}.
-     *
-     * @param name       the name of the node. This should be the same name
-     *                   used in any recordings you plan on playing back.
-     * @param recordable the {@code Recordable} to add.
-     * @return {@code this}, used for method chaining.
-     */
-    public Voyager addRecordable(String name, Recordable<?> recordable) {
-        recorder.putNode(name, recordable);
-
-        return this;
-    }
-
-    /**
      * Get Pathfinder's plugin manager. This manager can be used to load
      * and unload plugins, allowing you to customize Pathfinder's inner
      * workings to your likings.
@@ -1460,70 +1105,7 @@ public class Voyager {
         return onTick(pf -> onTick.run());
     }
 
-    /**
-     * Bind an operation to the invocation of Pathfinder's {@link #tick()}
-     * method. This utilizes Pathfinder's {@link ListenerManager} to accommodate
-     * for more advanced features, such as expiration time, cooldown, and
-     * the maximum number of executions.
-     *
-     * @param onTick         an action to be executed whenever Pathfinder
-     *                       ticks. This will be executed right before the
-     *                       plugin post-tick stuff, meaning it's after
-     *                       everything else.
-     * @param minimumDelayMs the minimum delay between executions of the
-     *                       {@code Runnable}, in milliseconds.
-     * @param expiration     the time the listener will expire, represented
-     *                       in milliseconds since Jan 1st, 1970.
-     * @param maxExecs       the maximum amount of times the listener can
-     *                       be executed before automatically being dequeued.
-     * @param priority       the event's priority. Events with a higher
-     *                       priority will be executed before events with
-     *                       a lower priority. Defaults to 0.
-     * @return {@code this}, used for method chaining.
-     */
-    public Voyager onTick(
-        Runnable onTick,
-        double minimumDelayMs,
-        double expiration,
-        int maxExecs,
-        int priority
-    ) {
-        return addListener(
-            new ListenerBuilder()
-                .setPriority(0)
-                .setMode(ListenerMode.CONDITION_IS_MET)
-                .addInput(() -> true)
-                .setExpiration(expiration)
-                .setCooldownMs(minimumDelayMs)
-                .setWhenTriggered(onTick)
-                .setMaximumExecutions(maxExecs)
-                .build()
-        );
-    }
 
-    /**
-     * Bind an operation to the invocation of Pathfinder's {@link #tick()}
-     * method. This utilizes Pathfinder's {@link ListenerManager} to accommodate
-     * for more advanced features, such as expiration time, cooldown, and
-     * the maximum number of executions.
-     *
-     * @param onTick         an action to be executed whenever Pathfinder
-     *                       ticks. This will be executed right before the
-     *                       plugin post-tick stuff, meaning it's after
-     *                       everything else.
-     * @param minimumDelayMs the minimum delay between executions of the
-     *                       {@code Runnable}, in milliseconds.
-     * @return {@code this}, used for method chaining.
-     */
-    public Voyager onTick(Runnable onTick, double minimumDelayMs) {
-        return onTick(
-            onTick,
-            minimumDelayMs,
-            Core.listenerBuilderDefaultExpiration,
-            Core.listenerBuilderDefaultMaximumExecutions,
-            Core.listenerBuilderDefaultPriority
-        );
-    }
 
     /**
      * Remove an on tick operation.
@@ -1542,7 +1124,6 @@ public class Voyager {
             this,
             isMinimal,
             pluginManager,
-            scheduler,
             zoneProcessor
         );
     }
@@ -1556,11 +1137,6 @@ public class Voyager {
             this,
             isMinimal,
             pluginManager,
-            playback,
-            profiler,
-            movementRecorder,
-            recorder,
-            listenerManager,
             this::runOnTickOperations
         );
     }
@@ -1598,12 +1174,8 @@ public class Voyager {
      * The order everything is ticked in is as follows:
      * <ol>
      *     <li>Plugin pre-tick ({@link PathfinderPluginManager#preTick(Voyager)})</li>
-     *     <li>Scheduler ({@link #getScheduler()})</li>
      *     <li>Zone processor ({@link #getZoneProcessor()})</li>
      *     <li>Executor manager ({@link #getExecutorManager()})</li>
-     *     <li>Playback manager ({@link #getPlayback()})</li>
-     *     <li>Motion profiler ({@link #getProfiler()})</li>
-     *     <li>Recording manager ({@link #getMovementRecorder()})</li>
      *     <li>On tick operations ({@link #onTickOperations})</li>
      *     <li>Plugin post-tick ({@link PathfinderPluginManager#postTick(Voyager)})</li>
      * </ol>
@@ -3255,170 +2827,6 @@ public class Voyager {
     }
 
     /**
-     * Get the robot's velocity according to the last motion snapshot. If
-     * no motion snapshots have been taken, invoking this method will cause
-     * a {@link NullPointerException}.
-     *
-     * <p>
-     * Along with all other profiler-related methods, the return value of
-     * this method is units per second. Because units are not specified
-     * anywhere and are thus left up to the user, these units can be anything
-     * at all - but the time will always remain in seconds.
-     * </p>
-     *
-     * @return the robot's velocity, in units per second.
-     */
-    public Velocity getVelocity() {
-        return profiler.getLastSnapshot().getVelocity();
-    }
-
-    /**
-     * Get the robot's velocity according to the last motion snapshot. If
-     * no motion snapshots have been taken, invoking this method will cause
-     * a {@link NullPointerException}.
-     *
-     * <p>
-     * Along with all other profiler-related methods, the return value of
-     * this method is units per second. Because units are not specified
-     * anywhere and are thus left up to the user, these units can be anything
-     * at all - but the time will always remain in seconds.
-     * </p>
-     *
-     * @return the robot's velocity, in units per second.
-     */
-    public double getVelocityXY() {
-        return profiler.getLastSnapshot().getVelocityXY();
-    }
-
-    /**
-     * Get the robot's X velocity according to the last motion snapshot. If
-     * no motion snapshots have been taken, invoking this method will cause
-     * a {@link NullPointerException}.
-     *
-     * <p>
-     * Along with all other profiler-related methods, the return value of
-     * this method is units per second. Because units are not specified
-     * anywhere and are thus left up to the user, these units can be anything
-     * at all - but the time will always remain in seconds.
-     * </p>
-     *
-     * @return the robot's X velocity, in units per second.
-     */
-    public double getVelocityX() {
-        return profiler.getLastSnapshot().getVelocityX();
-    }
-
-    /**
-     * Get the robot's Y velocity according to the last motion snapshot. If
-     * no motion snapshots have been taken, invoking this method will cause
-     * a {@link NullPointerException}.
-     *
-     * <p>
-     * Along with all other profiler-related methods, the return value of
-     * this method is units per second. Because units are not specified
-     * anywhere and are thus left up to the user, these units can be anything
-     * at all - but the time will always remain in seconds.
-     * </p>
-     *
-     * @return the robot's Y velocity, in units per second.
-     */
-    public double getVelocityY() {
-        return profiler.getLastSnapshot().getVelocityY();
-    }
-
-    /**
-     * Get the robot's Z velocity according to the last motion snapshot. If
-     * no motion snapshots have been taken, invoking this method will cause
-     * a {@link NullPointerException}.
-     *
-     * <p>
-     * Along with all other profiler-related methods, the return value of
-     * this method is units per second. Because units are not specified
-     * anywhere and are thus left up to the user, these units can be anything
-     * at all - but the time will always remain in seconds.
-     * </p>
-     *
-     * @return the robot's Z velocity, in units per second. Because this is
-     * an angle and not a degree or radian measure, I can't think of a better
-     * term, but it's basically just angle per second.
-     */
-    public Angle getVelocityZ() {
-        return profiler.getLastSnapshot().getVelocityZ();
-    }
-
-    /**
-     * Get the robot's acceleration according to the last motion snapshot. If
-     * no motion snapshots have been taken, invoking this method will cause
-     * a {@link NullPointerException}.
-     *
-     * <p>
-     * Along with all other profiler-related methods, the return value of
-     * this method is units per second. Because units are not specified
-     * anywhere and are thus left up to the user, these units can be anything
-     * at all - but the time will always remain in seconds.
-     * </p>
-     *
-     * @return the robot's acceleration, in units per second squared.
-     */
-    public double getAccelerationXY() {
-        return profiler.getLastSnapshot().getAccelerationXY();
-    }
-
-    /**
-     * Get the robot's X acceleration according to the last motion snapshot. If
-     * no motion snapshots have been taken, invoking this method will cause
-     * a {@link NullPointerException}.
-     *
-     * <p>
-     * Along with all other profiler-related methods, the return value of
-     * this method is units per second. Because units are not specified
-     * anywhere and are thus left up to the user, these units can be anything
-     * at all - but the time will always remain in seconds.
-     * </p>
-     *
-     * @return the robot's X acceleration, in units per second squared.
-     */
-    public double getAccelerationX() {
-        return profiler.getLastSnapshot().getAccelerationX();
-    }
-
-    /**
-     * Get the robot's Y acceleration according to the last motion snapshot. If
-     * no motion snapshots have been taken, invoking this method will cause
-     * a {@link NullPointerException}.
-     *
-     * <p>
-     * Along with all other profiler-related methods, the return value of
-     * this method is units per second. Because units are not specified
-     * anywhere and are thus left up to the user, these units can be anything
-     * at all - but the time will always remain in seconds.
-     * </p>
-     *
-     * @return the robot's Y acceleration, in units per second squared.
-     */
-    public double getAccelerationY() {
-        return profiler.getLastSnapshot().getAccelerationY();
-    }
-
-    /**
-     * Get the robot's Z acceleration according to the last motion snapshot. If
-     * no motion snapshots have been taken, invoking this method will cause
-     * a {@link NullPointerException}.
-     *
-     * <p>
-     * Along with all other profiler-related methods, the return value of
-     * this method is units per second. Because units are not specified
-     * anywhere and are thus left up to the user, these units can be anything
-     * at all - but the time will always remain in seconds.
-     * </p>
-     *
-     * @return the robot's Z acceleration, in units per second squared.
-     */
-    public Angle getAccelerationZ() {
-        return profiler.getLastSnapshot().getAccelerationZ();
-    }
-
-    /**
      * Lock Pathfinder's heading by using a modifier. Every time a translation
      * is set to the drive train, it will be modified so that it will turn
      * the robot towards the provided heading value.
@@ -3546,51 +2954,6 @@ public class Voyager {
         getDrive().setDriveModifier(lastDriveModifier);
 
         return this;
-    }
-
-    /**
-     * Create a new {@code Button} (sort of, anyways).
-     *
-     * @param supplier  a supplier that returns the system's state.
-     * @param predicate a predicate that evaluates the system's state.
-     * @return a new {@code Button}.
-     */
-    public <T> Button newButton(Supplier<T> supplier, Predicate<T> predicate) {
-        return new Button(listenerManager, supplier, predicate);
-    }
-
-    /**
-     * Create a new {@code Button} with a pre-attached {@code ListenerManager}.
-     *
-     * @param stateSupplier a supplier that returns the button's state. If
-     *                      the button is pressed, this should return true.
-     *                      Otherwise, this should return false.
-     * @return a new {@code Button}.
-     */
-    public Button newButton(Supplier<Boolean> stateSupplier) {
-        return new Button(listenerManager, stateSupplier);
-    }
-
-    /**
-     * Create a new {@code Button} with a pre-attached {@code ListenerManager}.
-     * This button is based on a trigger.
-     *
-     * @param stateSupplier a supplier that returns the trigger's state. This
-     *                      value should almost always be within the range
-     *                      of 0-1, where 0 is not at all pressed and 1 is
-     *                      completely pressed.
-     * @param deadZone      the minimum value of the trigger that counts as
-     *                      being pressed.
-     * @return a new {@code Button}.
-     */
-    public Button newTriggerButton(
-        Supplier<Double> stateSupplier,
-        double deadZone
-    ) {
-        return new Button(
-            listenerManager,
-            () -> stateSupplier.get() >= deadZone
-        );
     }
 
     @Override

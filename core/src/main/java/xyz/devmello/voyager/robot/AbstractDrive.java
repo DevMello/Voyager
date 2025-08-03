@@ -13,7 +13,7 @@ package xyz.devmello.voyager.robot;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import xyz.devmello.voyager.geometry.Translation;
+import xyz.devmello.voyager.math.geometry.Translation;
 
 /**
  * Abstract implementation of the {@link Drive} interface. This class handles

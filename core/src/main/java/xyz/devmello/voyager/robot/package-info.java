@@ -14,7 +14,7 @@
  * <p>
  * Pathfinder contains many hardware components that are not used anywhere
  * in Pathfinder's source code. This is done for standardization purposes -
- * a generic sensor, such as {@link xyz.devmello.voyager.robot.sensors.Accelerometer},
+ * a generic sensor,
  * can now be used across many different projects without relying on
  * vendor-specific classes.
  * </p>

@@ -12,8 +12,8 @@ package xyz.devmello.voyager.pathgen;
 
 import java.util.ArrayList;
 import java.util.List;
-import xyz.devmello.voyager.geometry.Line;
-import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.Line;
+import xyz.devmello.voyager.math.geometry.PointXY;
 
 /**
  * Utilities used for optimizing paths.

@@ -10,8 +10,8 @@
 
 package xyz.devmello.voyager.math;
 
-import xyz.devmello.voyager.geometry.LinearEquation;
-import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.LinearEquation;
+import xyz.devmello.voyager.math.geometry.PointXY;
 import xyz.devmello.voyager.utils.StringUtils;
 
 /**

@@ -11,7 +11,7 @@
 package xyz.devmello.voyager.plugin;
 
 import xyz.devmello.voyager.Voyager;
-import xyz.devmello.voyager.follower.Follower;
+import xyz.devmello.voyager.execution.follower.Follower;
 import xyz.devmello.voyager.zones.Zone;
 
 /**

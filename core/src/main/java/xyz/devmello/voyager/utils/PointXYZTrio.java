@@ -10,7 +10,7 @@
 
 package xyz.devmello.voyager.utils;
 
-import xyz.devmello.voyager.geometry.PointXYZ;
+import xyz.devmello.voyager.math.geometry.PointXYZ;
 
 public class PointXYZTrio extends Trio<PointXYZ, PointXYZ, PointXYZ> {
 

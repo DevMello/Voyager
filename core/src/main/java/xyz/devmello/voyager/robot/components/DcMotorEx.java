@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import xyz.devmello.voyager.utils.ValidationUtils;
 
 public class DcMotorEx extends BaseMotor{
-    public final com.qualcomm.robotcore.hardware.DcMotorEx motor;
+    private final com.qualcomm.robotcore.hardware.DcMotorEx motor;
 
     public DcMotorEx(String name, HardwareMap hardwareMap) {
         this(name, hardwareMap, false);
@@ -29,6 +29,9 @@ public class DcMotorEx extends BaseMotor{
         setDeadband(deadband);
     }
 
+    public com.qualcomm.robotcore.hardware.DcMotorEx getDcMotorEx() {
+        return motor;
+    }
 
     @Override
     public void abstractSetPower(double power) {

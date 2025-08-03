@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import xyz.devmello.voyager.Voyager;
-import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.PointXY;
 import xyz.devmello.voyager.plugin.PathfinderPluginManager;
 
 /**

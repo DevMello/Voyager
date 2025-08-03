@@ -2,9 +2,8 @@ package xyz.devmello.tests.pathfinder;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import xyz.devmello.voyager.geometry.PointXY;
-import xyz.devmello.voyager.geometry.Rectangle;
-import xyz.devmello.voyager.math.Equals;
+import xyz.devmello.voyager.math.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.Rectangle;
 import xyz.devmello.voyager.pathgen.LocalizedPathGen;
 import xyz.devmello.voyager.zones.Zone;
 

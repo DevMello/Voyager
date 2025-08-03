@@ -11,7 +11,7 @@
 package xyz.devmello.voyager.robot.modifiers;
 
 import java.util.function.Function;
-import xyz.devmello.voyager.geometry.Translation;
+import xyz.devmello.voyager.math.geometry.Translation;
 
 /**
  * Simple modifier for drivetrains.

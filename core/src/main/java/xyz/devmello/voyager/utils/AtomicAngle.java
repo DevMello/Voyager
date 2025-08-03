@@ -11,7 +11,7 @@
 package xyz.devmello.voyager.utils;
 
 import java.util.concurrent.atomic.AtomicReference;
-import xyz.devmello.voyager.geometry.Angle;
+import xyz.devmello.voyager.math.geometry.Angle;
 
 /**
  * {@code AtomicReference} for {@link Angle}.

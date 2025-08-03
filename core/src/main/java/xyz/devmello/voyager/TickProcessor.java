@@ -11,13 +11,8 @@
 package xyz.devmello.voyager;
 
 import xyz.devmello.voyager.execution.ExecutorManager;
-import xyz.devmello.voyager.listening.ListenerManager;
-import xyz.devmello.voyager.movement.MovementProfiler;
 import xyz.devmello.voyager.plugin.PathfinderPluginManager;
-import xyz.devmello.voyager.recording.MovementPlayback;
-import xyz.devmello.voyager.recording.MovementRecorder;
-import xyz.devmello.voyager.recording.StateRecorder;
-import xyz.devmello.voyager.scheduler.Scheduler;
+
 import xyz.devmello.voyager.zones.ZoneProcessor;
 
 /**
@@ -36,14 +31,12 @@ public class TickProcessor {
         Voyager voyager,
         boolean isMinimal,
         PathfinderPluginManager pluginManager,
-        Scheduler scheduler,
         ZoneProcessor zoneProcessor
     ) {
         voyager.getRobot().odometry().tick();
         pluginManager.preTick(voyager);
 
         if (!isMinimal) {
-            scheduler.tick();
             zoneProcessor.update(voyager);
         }
 
@@ -63,23 +56,11 @@ public class TickProcessor {
         Voyager voyager,
         boolean isMinimal,
         PathfinderPluginManager pluginManager,
-        MovementPlayback movementPlayback,
-        MovementProfiler movementProfiler,
-        MovementRecorder movementRecorder,
-        StateRecorder recorder,
-        ListenerManager listenerManager,
         Runnable runOnTickOperations
     ) {
         pluginManager.onTick(voyager);
 
         if (!isMinimal) {
-            movementPlayback.tick();
-            movementProfiler.capture(voyager.getPosition());
-            movementRecorder.tick();
-
-            recorder.update();
-
-            listenerManager.tick(voyager);
             runOnTickOperations.run();
         }
 

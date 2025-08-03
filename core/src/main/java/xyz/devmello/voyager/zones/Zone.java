@@ -14,8 +14,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import xyz.devmello.voyager.Voyager;
-import xyz.devmello.voyager.geometry.PointXY;
-import xyz.devmello.voyager.geometry.Shape;
+import xyz.devmello.voyager.math.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.Shape;
 
 /**
  * A zone is a wrapper for a shape that provides some additional utilities

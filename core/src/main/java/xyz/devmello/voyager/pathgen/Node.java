@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.PointXY;
 import xyz.devmello.voyager.utils.StringUtils;
 
 /**

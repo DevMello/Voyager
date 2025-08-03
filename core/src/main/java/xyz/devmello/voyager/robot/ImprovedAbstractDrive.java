@@ -11,7 +11,7 @@
 package xyz.devmello.voyager.robot;
 
 import java.util.function.Function;
-import xyz.devmello.voyager.geometry.Translation;
+import xyz.devmello.voyager.math.geometry.Translation;
 
 /**
  * An improved implementation of {@link Drive}. All you need to do to create

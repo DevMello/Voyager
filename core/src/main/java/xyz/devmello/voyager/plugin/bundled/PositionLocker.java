@@ -11,7 +11,7 @@
 package xyz.devmello.voyager.plugin.bundled;
 
 import xyz.devmello.voyager.Voyager;
-import xyz.devmello.voyager.geometry.PointXYZ;
+import xyz.devmello.voyager.math.geometry.PointXYZ;
 import xyz.devmello.voyager.plugin.PathfinderPlugin;
 
 /**

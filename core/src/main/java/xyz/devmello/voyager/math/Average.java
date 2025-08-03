@@ -10,10 +10,10 @@
 
 package xyz.devmello.voyager.math;
 
-import xyz.devmello.voyager.geometry.Angle;
-import xyz.devmello.voyager.geometry.PointXY;
-import xyz.devmello.voyager.geometry.PointXYZ;
-import xyz.devmello.voyager.geometry.Translation;
+import xyz.devmello.voyager.math.geometry.Angle;
+import xyz.devmello.voyager.math.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.PointXYZ;
+import xyz.devmello.voyager.math.geometry.Translation;
 
 /**
  * Get the average of different sets of data. These methods only exist

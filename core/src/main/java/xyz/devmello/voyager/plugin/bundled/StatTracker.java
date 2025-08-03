@@ -11,12 +11,12 @@
 package xyz.devmello.voyager.plugin.bundled;
 
 import xyz.devmello.voyager.Voyager;
-import xyz.devmello.voyager.follower.Follower;
-import xyz.devmello.voyager.geometry.PointXY;
-import xyz.devmello.voyager.geometry.PointXYZ;
+import xyz.devmello.voyager.execution.follower.Follower;
+import xyz.devmello.voyager.math.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.PointXYZ;
 import xyz.devmello.voyager.math.RollingAverage;
 import xyz.devmello.voyager.plugin.PathfinderPlugin;
-import xyz.devmello.voyager.time.Time;
+import xyz.devmello.voyager.utils.time.Time;
 
 /**
  * Rudimentary plugin that tracks statistics on Pathfinder usage. This is

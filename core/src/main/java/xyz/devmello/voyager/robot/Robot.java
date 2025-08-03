@@ -10,8 +10,8 @@
 
 package xyz.devmello.voyager.robot;
 
-import xyz.devmello.voyager.exceptions.NullDriveException;
-import xyz.devmello.voyager.exceptions.NullOdometryException;
+import xyz.devmello.voyager.logging.exceptions.NullDriveException;
+import xyz.devmello.voyager.logging.exceptions.NullOdometryException;
 import xyz.devmello.voyager.utils.StringUtils;
 import xyz.devmello.voyager.utils.ValidationUtils;
 

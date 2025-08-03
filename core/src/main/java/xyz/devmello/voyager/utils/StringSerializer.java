@@ -10,10 +10,10 @@
 
 package xyz.devmello.voyager.utils;
 
-import xyz.devmello.voyager.geometry.Angle;
-import xyz.devmello.voyager.geometry.PointXY;
-import xyz.devmello.voyager.geometry.PointXYZ;
-import xyz.devmello.voyager.geometry.Translation;
+import xyz.devmello.voyager.math.geometry.Angle;
+import xyz.devmello.voyager.math.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.PointXYZ;
+import xyz.devmello.voyager.math.geometry.Translation;
 
 /**
  * Utilities for serializing and deserializing different types from Pathfinder

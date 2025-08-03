@@ -11,8 +11,8 @@
 package xyz.devmello.voyager.robot;
 
 import java.util.function.Function;
-import xyz.devmello.voyager.exceptions.NullPointException;
-import xyz.devmello.voyager.geometry.PointXYZ;
+import xyz.devmello.voyager.logging.exceptions.NullPointException;
+import xyz.devmello.voyager.math.geometry.PointXYZ;
 import xyz.devmello.voyager.utils.ValidationUtils;
 
 /**

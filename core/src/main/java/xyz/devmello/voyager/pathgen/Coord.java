@@ -12,10 +12,12 @@ package xyz.devmello.voyager.pathgen;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import xyz.devmello.voyager.math.geometry.PointXY;
 import xyz.devmello.voyager.utils.StringUtils;
 
 /**
- * A coordinate is basically a {@link xyz.devmello.voyager.geometry.PointXY},
+ * A coordinate is basically a {@link PointXY},
  * but with integers instead of doubles.
  *
  * @author Colin Robertson

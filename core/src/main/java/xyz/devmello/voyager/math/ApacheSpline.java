@@ -14,8 +14,8 @@ import java.util.Arrays;
 import org.apache.commons.math3.analysis.interpolation.AkimaSplineInterpolator;
 import org.apache.commons.math3.analysis.interpolation.SplineInterpolator;
 import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
-import xyz.devmello.voyager.exceptions.SplineException;
-import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.logging.exceptions.SplineException;
+import xyz.devmello.voyager.math.geometry.PointXY;
 import xyz.devmello.voyager.utils.StringUtils;
 
 /**

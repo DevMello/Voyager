@@ -10,7 +10,6 @@
 
 package xyz.devmello.voyager.robot.components;
 
-import xyz.devmello.voyager.recording.Recordable;
 
 /**
  * A (very simple) motor interface. For almost all purposes, it's generally
@@ -46,7 +45,7 @@ import xyz.devmello.voyager.recording.Recordable;
  * @see BaseMotor
  * @since 0.0.0
  */
-public interface Motor extends Recordable<Double> {
+public interface Motor {
     /**
      * Get a power value from the motor. This method should return whatever
      * power the motor is currently operating at. In most cases, this should
@@ -199,16 +198,4 @@ public interface Motor extends Recordable<Double> {
         return toAbstractMotor().setMax(max);
     }
 
-    @Override
-    default Double getRecordingValue() {
-        return getPower();
-    }
-
-    @Override
-    default void setRecordingValue(Object obj) {
-        if (obj instanceof Double) {
-            Double d = (Double) obj;
-            setPower(d);
-        }
-    }
 }

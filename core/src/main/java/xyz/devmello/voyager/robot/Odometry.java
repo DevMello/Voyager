@@ -12,8 +12,8 @@ package xyz.devmello.voyager.robot;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
-import xyz.devmello.voyager.geometry.Angle;
-import xyz.devmello.voyager.geometry.PointXYZ;
+import xyz.devmello.voyager.math.geometry.Angle;
+import xyz.devmello.voyager.math.geometry.PointXYZ;
 import xyz.devmello.voyager.utils.ValidationUtils;
 
 /**

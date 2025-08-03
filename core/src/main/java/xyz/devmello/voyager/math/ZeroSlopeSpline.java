@@ -10,7 +10,7 @@
 
 package xyz.devmello.voyager.math;
 
-import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.PointXY;
 
 /**
  * A spline with a slope of 0.

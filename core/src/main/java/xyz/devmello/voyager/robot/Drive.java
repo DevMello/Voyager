@@ -11,8 +11,10 @@
 package xyz.devmello.voyager.robot;
 
 import java.util.function.Function;
-import xyz.devmello.voyager.geometry.Angle;
-import xyz.devmello.voyager.geometry.Translation;
+import xyz.devmello.voyager.math.geometry.Angle;
+import xyz.devmello.voyager.math.geometry.Translation;
+import xyz.devmello.voyager.robot.drive.MecanumDrive;
+import xyz.devmello.voyager.robot.drive.SwerveDrive;
 
 /**
  * One of the two major components of your robot - firstly, there's odometry,
@@ -46,8 +48,8 @@ import xyz.devmello.voyager.geometry.Translation;
  * It doesn't matter HOW your drive interface is implemented. There are
  * several prebuilt options, such as...
  * <ul>
- *     <li>{@link xyz.devmello.voyager.drive.MecanumDrive}</li>
- *     <li>{@link xyz.devmello.voyager.drive.SwerveDrive}</li>
+ *     <li>{@link MecanumDrive}</li>
+ *     <li>{@link SwerveDrive}</li>
  * </ul>
  * ... but it doesn't exactly matter how your drivetrain is implemented, so
  * long as it works. The drivetrain must actually set power to motors - if

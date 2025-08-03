@@ -11,7 +11,7 @@
 package xyz.devmello.voyager.pathgen;
 
 import java.util.List;
-import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.PointXY;
 import xyz.devmello.voyager.zones.Zone;
 
 /**

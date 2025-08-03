@@ -10,7 +10,7 @@
 
 package xyz.devmello.voyager.math;
 
-import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.PointXY;
 
 /**
  * Implementation of the {@code Spline} interface that utilizes an

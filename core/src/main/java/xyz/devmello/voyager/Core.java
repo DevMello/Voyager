@@ -10,9 +10,10 @@
 
 package xyz.devmello.voyager;
 
-import xyz.devmello.voyager.geometry.Angle;
-import xyz.devmello.voyager.geometry.Translation;
-import xyz.devmello.voyager.trajectory.LinearTrajectory;
+import xyz.devmello.voyager.math.geometry.Angle;
+import xyz.devmello.voyager.math.geometry.PointXYZ;
+import xyz.devmello.voyager.math.geometry.Translation;
+import xyz.devmello.voyager.execution.trajectory.LinearTrajectory;
 
 /**
  * Various pseudo-constant values used throughout Pathfinder's core module.
@@ -63,14 +64,14 @@ public class Core {
 
     /**
      * The default coefficient for the
-     * {@link Voyager#splineTo(xyz.devmello.voyager.geometry.PointXYZ...)}
+     * {@link Voyager#splineTo(PointXYZ...)}
      * method.
      */
     public static final double pathfinderSplineStepCoefficient = 10;
 
     /**
      * The default coefficient for the
-     * {@link Voyager#splineTo(xyz.devmello.voyager.geometry.PointXYZ...)}
+     * {@link Voyager#splineTo(PointXYZ...)}
      * method.
      */
     public static final double pathfinderStepDivisor = 20;

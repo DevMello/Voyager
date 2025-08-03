@@ -11,7 +11,7 @@
 package xyz.devmello.voyager.math;
 
 import java.util.List;
-import xyz.devmello.voyager.geometry.PointXY;
+import xyz.devmello.voyager.math.geometry.PointXY;
 
 /**
  * A spline. I don't know much of a better way to explain it, to be entirely

@@ -10,8 +10,8 @@
 
 package xyz.devmello.voyager.math;
 
-import xyz.devmello.voyager.exceptions.InvalidToleranceException;
-import xyz.devmello.voyager.geometry.Angle;
+import xyz.devmello.voyager.logging.exceptions.InvalidToleranceException;
+import xyz.devmello.voyager.math.geometry.Angle;
 import xyz.devmello.voyager.utils.ValidationUtils;
 
 /**

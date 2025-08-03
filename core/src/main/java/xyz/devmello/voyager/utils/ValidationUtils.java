@@ -10,7 +10,7 @@
 
 package xyz.devmello.voyager.utils;
 
-import xyz.devmello.voyager.exceptions.ValidationException;
+import xyz.devmello.voyager.logging.exceptions.ValidationException;
 import xyz.devmello.voyager.logging.Logger;
 
 /**
