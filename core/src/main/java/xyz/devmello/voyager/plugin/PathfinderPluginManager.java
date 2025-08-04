@@ -15,7 +15,7 @@ import java.util.List;
 import xyz.devmello.voyager.Voyager;
 import xyz.devmello.voyager.execution.follower.Follower;
 import xyz.devmello.voyager.logging.Logger;
-import xyz.devmello.voyager.zones.Zone;
+import xyz.devmello.voyager.pathgen.zones.Zone;
 
 /**
  * A manager for controlling the loading and usage of any plugins being

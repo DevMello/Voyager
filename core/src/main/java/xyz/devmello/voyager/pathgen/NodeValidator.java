@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import xyz.devmello.voyager.math.geometry.PointXY;
 import xyz.devmello.voyager.math.geometry.Rectangle;
-import xyz.devmello.voyager.zones.Zone;
+import xyz.devmello.voyager.pathgen.zones.Zone;
 
 /**
  * Validate a set of nodes.

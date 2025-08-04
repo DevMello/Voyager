@@ -8,7 +8,7 @@
  * <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPL V3</a>
  */
 
-package xyz.devmello.voyager.zones;
+package xyz.devmello.voyager.pathgen.zones;
 
 import java.util.ArrayList;
 import java.util.HashMap;

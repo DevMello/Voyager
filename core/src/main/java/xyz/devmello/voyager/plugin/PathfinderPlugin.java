@@ -12,7 +12,7 @@ package xyz.devmello.voyager.plugin;
 
 import xyz.devmello.voyager.Voyager;
 import xyz.devmello.voyager.execution.follower.Follower;
-import xyz.devmello.voyager.zones.Zone;
+import xyz.devmello.voyager.pathgen.zones.Zone;
 
 /**
  * A {@code PathfinderPlugin} is a piece of code that can be written to modify

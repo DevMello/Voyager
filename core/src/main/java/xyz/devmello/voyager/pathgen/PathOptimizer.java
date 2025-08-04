@@ -12,42 +12,18 @@ package xyz.devmello.voyager.pathgen;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import xyz.devmello.voyager.math.geometry.Geometry;
 import xyz.devmello.voyager.math.geometry.Line;
 import xyz.devmello.voyager.math.geometry.PointXY;
 
 /**
  * Utilities used for optimizing paths.
  *
- * @author Colin Robertson
+ * @author Pranav Yerramaneni
  * @since 0.1.0
  */
 public class PathOptimizer {
-
-    /**
-     * Determine the length of a set of points/path.
-     *
-     * @param path the path to determine the total length of.
-     * @return the total length of the path.
-     */
-    public static double determineLength(List<PointXY> path) {
-        List<Line> lines = new ArrayList<>(path.size() * 2);
-
-        for (int i = 0; i < path.size() - 1; i++) {
-            PointXY current = path.get(i);
-            PointXY next = path.get(i + 1);
-
-            Line line = new Line(current, next);
-            lines.add(line);
-        }
-
-        double length = 0;
-
-        for (Line line : lines) {
-            length += Math.abs(line.length());
-        }
-
-        return length;
-    }
 
     /**
      * Optimize a path by removing collinear points. This reduces the size
@@ -58,71 +34,99 @@ public class PathOptimizer {
      * @param path the path to optimize.
      * @return an optimized path.
      */
-    public static List<PointXY> optimize(List<PointXY> path) {
-        List<PointXY> optimized = new ArrayList<>(path.size());
+    /**
+     * Optimizes a path by using the Ramer-Douglas-Peucker algorithm to remove
+     * redundant points that are approximately on a straight line.
+     *
+     * @param path The original list of points.
+     * @param epsilon The maximum allowed distance a point can be from a line segment
+     * before it is considered a significant corner. A smaller value
+     * results in a more detailed path; a larger value results in a
+     * more simplified path. A good starting value might be 1.0.
+     * @return A new list of points representing the simplified path.
+     */
+    public static List<PointXY> optimize(List<PointXY> path, double epsilon) {
+        if (path.size() <= 2) {
+            return new ArrayList<>(path);
+        }
 
-        PointXY start = path.get(0);
-        PointXY end = path.get(path.size() - 1);
+        // The RDP algorithm is recursive, so we use a helper method.
+        List<PointXY> simplifiedPath = new ArrayList<>();
+        simplifyPath(path, 0, path.size() - 1, epsilon, simplifiedPath);
 
-        // remove collinear points
-        PointXY lastCollinear = null;
-        for (int i = 1; i < path.size() - 1; i++) {
-            PointXY previous = path.get(i - 1);
-            PointXY current = path.get(i);
-            PointXY next = path.get(i + 1);
+        // The recursive function does not add the last point, so we add it here.
+        simplifiedPath.add(path.get(path.size() - 1));
 
-            if (PointXY.areCollinear(previous, current, next)) {
-                lastCollinear = current;
-            } else {
-                if (lastCollinear == null) {
-                    optimized.add(current);
-                } else {
-                    optimized.add(lastCollinear);
-                    lastCollinear = null;
-                }
+        return simplifiedPath;
+    }
+
+    /**
+     * Recursive helper method for the Ramer-Douglas-Peucker algorithm.
+     *
+     * @param path The original list of points.
+     * @param startIndex The starting index of the current segment to simplify.
+     * @param endIndex The ending index of the current segment to simplify.
+     * @param epsilon The tolerance for simplification.
+     * @param simplifiedPath The list to which simplified points are added.
+     */
+    private static void simplifyPath(List<PointXY> path, int startIndex, int endIndex, double epsilon, List<PointXY> simplifiedPath) {
+        double maxDistance = 0.0;
+        int index = -1;
+
+        // Find the point with the maximum perpendicular distance from the line segment.
+        PointXY startPoint = path.get(startIndex);
+        PointXY endPoint = path.get(endIndex);
+
+        for (int i = startIndex + 1; i < endIndex; i++) {
+            double distance = perpendicularDistance(startPoint, endPoint, path.get(i));
+            if (distance > maxDistance) {
+                maxDistance = distance;
+                index = i;
             }
         }
 
-        // if there's still a collinear point to add, add it
-        if (lastCollinear != null) optimized.add(lastCollinear);
-
-        if (optimized.size() == 0) return new ArrayList<>();
-
-        // make sure the optimized path includes the start and end points
-        if (!optimized.get(0).equals(start)) optimized.add(0, start);
-        if (!optimized.get(optimized.size() - 1).equals(end)) optimized.add(
-            end
-        );
-
-        // edge case - if the path is entirely linear, return a 2-point
-        // path
-        int size = optimized.size();
-        if (size == 3) {
-            PointXY a = optimized.get(0);
-            PointXY b = optimized.get(1);
-            PointXY c = optimized.get(2);
-
-            if (PointXY.areCollinear(a, b, c)) optimized.remove(b);
-
-            return optimized;
-        }
-
-        // do a second pass to further optimize the path
-        List<PointXY> toRemove = new ArrayList<>(optimized.size());
-        for (int i = 1; i < size - 1; i++) {
-            PointXY previous = path.get(i - 1);
-            PointXY current = path.get(i);
-            PointXY next = path.get(i + 1);
-
-            if (PointXY.areCollinear(previous, current, next)) {
-                toRemove.add(current);
+        // If the max distance is greater than our tolerance, it's a significant corner.
+        if (maxDistance > epsilon) {
+            // Recursively simplify the two sub-segments.
+            if (index != -1) {
+                simplifyPath(path, startIndex, index, epsilon, simplifiedPath);
+                simplifiedPath.add(path.get(index));
+                simplifyPath(path, index, endIndex, epsilon, simplifiedPath);
             }
+        } else {
+            // If the max distance is within tolerance, the whole segment is considered straight.
+            // We just add the start point to the final path. The end point will be
+            // handled by the next recursive call or the final step in the wrapper.
+            simplifiedPath.add(startPoint);
+        }
+    }
+
+    /**
+     * Calculates the perpendicular distance from a point to a line segment.
+     *
+     * @param lineStart The start point of the line segment.
+     * @param lineEnd The end point of the line segment.
+     * @param p The point to check.
+     * @return The perpendicular distance.
+     */
+    private static double perpendicularDistance(PointXY lineStart, PointXY lineEnd, PointXY p) {
+        double dx = lineEnd.x() - lineStart.x();
+        double dy = lineEnd.y() - lineStart.y();
+
+        double lineLengthSquared = dx * dx + dy * dy;
+
+        // If the line segment has zero length, we just return the distance to the point.
+        if (lineLengthSquared == 0.0) {
+            return p.distance(lineStart);
         }
 
-        for (PointXY point : toRemove) {
-            optimized.remove(point);
-        }
+        // Calculate the projection of the point onto the line.
+        double t = ((p.x() - lineStart.x()) * dx + (p.y() - lineStart.y()) * dy) / lineLengthSquared;
 
-        return optimized;
+        // Clamp t to the range [0, 1] to ensure we're calculating the distance to the line segment.
+        t = Math.max(0.0, Math.min(1.0, t));
+
+        PointXY projection = new PointXY(lineStart.x() + t * dx, lineStart.y() + t * dy);
+        return p.distance(projection);
     }
 }

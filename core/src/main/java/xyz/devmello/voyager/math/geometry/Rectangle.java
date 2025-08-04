@@ -141,6 +141,55 @@ public class Rectangle implements Shape<Rectangle> {
     }
 
     /**
+     * Create a rectangle by giving two points.
+     * Either A and C, or B and D.
+     *
+     * @param a one of the rectangle's two points.
+     * @param c the other rectangle's two points.
+     */
+    public Rectangle(PointXY a, PointXY c) {
+        PointXY.checkArgument(a);
+        PointXY.checkArgument(c);
+
+        if (PointXY.areDuplicatesPresent(a, c)) {
+            throw new IllegalArgumentException(
+                "Cannot create a rectangle with duplicate points! " +
+                "Make sure your rectangle has > 0 width and > 0 " +
+                "height."
+            );
+        }
+
+        double minX = Math.min(a.x(), c.x());
+        double minY = Math.min(a.y(), c.y());
+        double maxX = Math.max(a.x(), c.x());
+        double maxY = Math.max(a.y(), c.y());
+
+        this.a = new PointXY(minX, minY);
+        this.b = new PointXY(minX, maxY);
+        this.c = new PointXY(maxX, maxY);
+        this.d = new PointXY(maxX, minY);
+
+        this.ab = new Line(this.a, this.b);
+        this.bc = new Line(this.b, this.c);
+        this.cd = new Line(this.c, this.d);
+        this.da = new Line(this.d, this.a);
+        this.ac = new Line(this.a, this.c);
+        this.bd = new Line(this.b, this.d);
+
+        if (!(ab.isParallelWith(cd) && bc.isParallelWith(da))) {
+            throw new IllegalArgumentException(
+                "Invalid points! Please make sure that 1. AB and CD are " +
+                "parallel, and 2. BC and DA are parallel."
+            );
+        }
+
+        this.center = Line.getIntersection(ac, bd);
+
+        this.sizeX = maxX - minX;
+        this.sizeY = maxY - minY;
+    }
+
+    /**
      * Create a new rectangle by giving minimum and maximum values.
      *
      * @param minX the minimum X value.

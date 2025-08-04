@@ -7,4 +7,5 @@ pluginManagement {
 
 rootProject.name = 'Voyager'
 include 'core'
+include 'desktop'
 

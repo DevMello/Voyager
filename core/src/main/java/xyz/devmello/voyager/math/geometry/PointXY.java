@@ -735,29 +735,32 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      * @return true if the points are collinear, false if not.
      */
     public static boolean areCollinear(PointXY a, PointXY b, PointXY c) {
+        return areCollinear(a, b, c, Geometry.toleranceCollinear);
+    }
+
+    /**
+     * Determine if three points are collinear.
+     *
+     * @param a one of the three points.
+     * @param b one of the three points.
+     * @param c one of the three points.
+     * @return true if the points are collinear, false if not.
+     */
+    public static boolean areCollinear(PointXY a, PointXY b, PointXY c, double tolerance) {
         checkArgument(a);
         checkArgument(b);
         checkArgument(c);
 
-        double dx1 =
-            (b.x() + Geometry.toleranceCollinear) -
-            (a.x() + Geometry.toleranceCollinear);
-        double dy1 =
-            (b.y() + Geometry.toleranceCollinear) -
-            (a.y() + Geometry.toleranceCollinear);
-        double dx2 =
-            (c.x() + Geometry.toleranceCollinear) -
-            (a.x() + Geometry.toleranceCollinear);
-        double dy2 =
-            (c.y() + Geometry.toleranceCollinear) -
-            (a.y() + Geometry.toleranceCollinear);
+        // Calculate the area of the triangle formed by the three points.
+        // If the points are collinear, the area will be zero.
+        // We use a tolerance for floating-point comparisons.
+        double area = a.x() * (b.y() - c.y()) +
+                b.x() * (c.y() - a.y()) +
+                c.x() * (a.y() - b.y());
 
-        return Equals.soft(
-            (dx1 * dy2),
-            (dx2 * dy1),
-            Geometry.toleranceCollinear
-        );
+        return Equals.soft(area, 0.0, tolerance);
     }
+
 
     /**
      * Are a set of points collinear?
@@ -766,11 +769,22 @@ public class PointXY implements Comparable<PointXY>, Serializable {
      * @return true if the points are collinear, otherwise, false.
      */
     public static boolean areCollinear(PointXY... points) {
+        return areCollinear(Geometry.toleranceCollinear, points);
+    }
+
+    /**
+     * Are a set of points collinear?
+     *
+     * @param tolerance the maximum distance between the points
+     * @param points the points to check.
+     * @return true if the points are collinear, otherwise, false.
+     */
+    public static boolean areCollinear(double tolerance, PointXY... points) {
         if (points.length < 3) throw new IllegalArgumentException(
-            "Must provide at least " +
-            "3 points, you only provided <" +
-            points.length +
-            ">"
+                "Must provide at least " +
+                        "3 points, you only provided <" +
+                        points.length +
+                        ">"
         );
 
         for (int i = 0; i < points.length - 3; i++) {

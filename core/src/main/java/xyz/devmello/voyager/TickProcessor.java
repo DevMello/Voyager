@@ -13,7 +13,7 @@ package xyz.devmello.voyager;
 import xyz.devmello.voyager.execution.ExecutorManager;
 import xyz.devmello.voyager.plugin.PathfinderPluginManager;
 
-import xyz.devmello.voyager.zones.ZoneProcessor;
+import xyz.devmello.voyager.pathgen.zones.ZoneProcessor;
 
 /**
  * Utility class responsible for processing Pathfinder's ticking operations.

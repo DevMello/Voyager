@@ -45,8 +45,8 @@ import xyz.devmello.voyager.execution.trajectory.Trajectory;
 import xyz.devmello.voyager.execution.trajectory.spline.AdvancedSplineTrajectoryBuilder;
 import xyz.devmello.voyager.execution.trajectory.spline.MultiSplineBuilder;
 import xyz.devmello.voyager.utils.*;
-import xyz.devmello.voyager.zones.Zone;
-import xyz.devmello.voyager.zones.ZoneProcessor;
+import xyz.devmello.voyager.pathgen.zones.Zone;
+import xyz.devmello.voyager.pathgen.zones.ZoneProcessor;
 
 /**
  * The highest-level interface used for interacting with {@code Pathfinder}.

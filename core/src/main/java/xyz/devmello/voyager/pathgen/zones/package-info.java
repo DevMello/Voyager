@@ -8,16 +8,7 @@
  * <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPL V3</a>
  */
 
-package xyz.devmello.voyager.math.geometry;
-
 /**
- * Angle measurement in degrees.
- *
- * @since 1.3.0
+ * Pathfinder's zoning system.
  */
-public class Degrees extends Angle {
-
-    public Degrees(double degrees) {
-        super(degrees);
-    }
-}
+package xyz.devmello.voyager.pathgen.zones;
