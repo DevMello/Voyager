@@ -26,15 +26,6 @@ import xyz.devmello.voyager.math.geometry.PointXY;
 public class PathOptimizer {
 
     /**
-     * Optimize a path by removing collinear points. This reduces the size
-     * of the path, and, in some cases, reduces the length of the path by
-     * allowing your robot to move in ways it wouldn't be able to have
-     * previously.
-     *
-     * @param path the path to optimize.
-     * @return an optimized path.
-     */
-    /**
      * Optimizes a path by using the Ramer-Douglas-Peucker algorithm to remove
      * redundant points that are approximately on a straight line.
      *
@@ -56,6 +47,17 @@ public class PathOptimizer {
 
         // The recursive function does not add the last point, so we add it here.
         simplifiedPath.add(path.get(path.size() - 1));
+
+        // Remove the duplicated points that may have been added
+        // due to the recursive nature of the algorithm.
+        for(int i = 1; i < simplifiedPath.size(); i++) {
+            PointXY current = simplifiedPath.get(i);
+            PointXY previous = simplifiedPath.get(i - 1);
+            if (current.equals(previous)) {
+                simplifiedPath.remove(i);
+                i--; // Adjust index after removal
+            }
+        }
 
         return simplifiedPath;
     }
@@ -87,7 +89,6 @@ public class PathOptimizer {
 
         // If the max distance is greater than our tolerance, it's a significant corner.
         if (maxDistance > epsilon) {
-            // Recursively simplify the two sub-segments.
             if (index != -1) {
                 simplifyPath(path, startIndex, index, epsilon, simplifiedPath);
                 simplifiedPath.add(path.get(index));

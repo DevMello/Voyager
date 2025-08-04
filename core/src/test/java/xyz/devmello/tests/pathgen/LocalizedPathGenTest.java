@@ -2,6 +2,7 @@ package xyz.devmello.tests.pathgen;
 import org.junit.jupiter.api.Test;
 import xyz.devmello.voyager.math.geometry.PointXY;
 import xyz.devmello.voyager.math.geometry.Rectangle;
+import xyz.devmello.voyager.pathgen.FTCField;
 import xyz.devmello.voyager.pathgen.LocalizedPathGen;
 import xyz.devmello.voyager.pathgen.zones.Zone;
 
@@ -135,16 +136,24 @@ class LocalizedPathGenTest {
 
         List<Zone> zones = new ArrayList<>();
         // Create an obstacle in the middle
-        zones.add(new Zone(new Rectangle(new PointXY(-10, -10), new PointXY(10, 10))));
+        zones.add(new Zone(new Rectangle(new PointXY(-15.3, 24.5), new PointXY(14.8, -23.8))));
+        zones.add(new Zone(new Rectangle(new PointXY(-25.2, -24), new PointXY(24.9, -22))));
+        zones.add(new Zone(new Rectangle(new PointXY(-25.4, 25.0), new PointXY(24.7, 23))));
+//        zones.add(FTCField.leftWall);
+//        zones.add(FTCField.rightWall);
+//        zones.add(FTCField.topWall);
+//        zones.add(FTCField.bottomWall);
+//
+//        LocalizedPathGen pathGen = new LocalizedPathGen(zones, minX, maxX, minY, maxY);
+//
+//        pathGen = LocalizedPathGen.withInflatedZones(pathGen,10, 14);
 
-        LocalizedPathGen pathGen = new LocalizedPathGen(zones, minX, maxX, minY, maxY);
+        FTCField field = new FTCField(zones, 10, 14);
 
-        pathGen = LocalizedPathGen.withInflatedZones(pathGen,10, 14);
+        PointXY startPoint = new PointXY(56.0, 0.4);
+        PointXY endPoint = new PointXY(-52.5, 0.4);
 
-        PointXY startPoint = new PointXY(60, 0);
-        PointXY endPoint = new PointXY(-60, 0);
-
-        List<PointXY> path = pathGen.getPath(startPoint, endPoint, 3);
+        List<PointXY> path = field.getPath(startPoint, endPoint, 3);
 
         assertNotNull(path, "Path should not be null");
         assertTrue(path.size() > 2, "Path should have more than two points to navigate around the obstacle");
