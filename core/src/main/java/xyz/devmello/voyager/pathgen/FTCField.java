@@ -6,6 +6,12 @@ import xyz.devmello.voyager.pathgen.zones.Zone;
 
 import java.util.List;
 
+/**
+ * Represents the FTC field with defined dimensions and wall zones.
+ * Provides path generation and zone management functionality.
+ *
+ * @author Pranav Yerramaneni
+ */
 public class FTCField {
 
     public static  final double  fieldWidth = 144.0;

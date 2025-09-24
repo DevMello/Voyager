@@ -26,6 +26,7 @@ import xyz.devmello.voyager.math.Equals;
  *
  *
  * @author Colin Robertson
+ * @author Pranav Yerramaneni
  * @since 0.1.0
  */
 public class Rectangle implements Shape<Rectangle> {

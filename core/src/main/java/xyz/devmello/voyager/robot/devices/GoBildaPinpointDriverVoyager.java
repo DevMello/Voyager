@@ -8,8 +8,15 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.robotcore.external.navigation.UnnormalizedAngleUnit;
-import xyz.devmello.voyager.math.geometry.PointXY;
 import xyz.devmello.voyager.math.geometry.PointXYZ;
+
+/**
+ * Driver for the goBILDA® Pinpoint Odometry Computer Roadrunner.
+ * Extends {@link GoBildaPinpointDriver} to provide additional functionality for Voyager robots.
+ * Handles encoder resolution and provides position and velocity in XYZ coordinates.
+ *
+ * @author Pranav Yerramaneni
+ */
 
 @I2cDeviceType
 @DeviceProperties(
@@ -41,9 +48,8 @@ public class GoBildaPinpointDriverVoyager extends GoBildaPinpointDriver {
         return new PointXYZ(ftcPose.getX(DistanceUnit.INCH), ftcPose.getY(DistanceUnit.INCH), ftcPose.getHeading(AngleUnit.RADIANS));
     }
 
-    public PointXYZ setPosition(PointXYZ pos) {
+    public void setPosition(PointXYZ pos) {
         this.setPosition(new Pose2D(DistanceUnit.INCH, pos.x(), pos.y(), AngleUnit.RADIANS, pos.z().rad()));
-        return pos;
     }
 
     public PointXYZ getVelocityXYZ() {
